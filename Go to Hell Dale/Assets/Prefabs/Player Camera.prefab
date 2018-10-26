@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f89b13e3146a74483d1e6fdfee9cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Offset: {x: 0, y: 5, z: 0}
+  _Offset: {x: 0, y: 4, z: 0}
   DampingTime: 0.15
   MaxLeadDistance: 2
   Target: {fileID: 4157248105622204, guid: a3ef8efdd1bb00f4e975bdda7727ec38, type: 2}

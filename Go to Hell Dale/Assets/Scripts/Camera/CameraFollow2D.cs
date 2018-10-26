@@ -29,13 +29,20 @@ public class CameraFollow2D : MonoBehaviour
         if (Target)
         {
             float leadDistance = _TargetPlayer.Velocity.x;
+            float leadHeight = _TargetPlayer.Velocity.y;
 
             if (leadDistance > MaxLeadDistance)
                 leadDistance = MaxLeadDistance;
             else if (leadDistance < (MaxLeadDistance * -1))
                 leadDistance = (MaxLeadDistance * -1);
 
-            Vector3 aheadPoint = Target.position + Offset + new Vector3(leadDistance, 0, 0);
+            
+            if (leadHeight > MaxLeadDistance)
+                leadHeight = MaxLeadDistance;
+            else if (leadHeight < (MaxLeadDistance * -1))
+                leadHeight = (MaxLeadDistance * -1);
+
+            Vector3 aheadPoint = Target.position + Offset + new Vector3(leadDistance, leadHeight, 0);
             Vector3 point = Camera.main.WorldToViewportPoint(aheadPoint);
             Vector3 delta = aheadPoint - Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
             Vector3 destination = transform.position + delta;
