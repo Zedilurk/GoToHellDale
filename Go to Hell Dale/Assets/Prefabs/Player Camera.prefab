@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 81116161417889338}
   - component: {fileID: 114821370132074304}
   - component: {fileID: 114006046335048550}
+  - component: {fileID: 114106135196463626}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -67,7 +68,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 60df61821f62008478f89eb628e574de, type: 2}
---- !u!114 &114821370132074304
+--- !u!114 &114106135196463626
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,10 +111,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456771505613846}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a1a93dbccc88d43b516a87a2d6839e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraState: 0
+  ZoneObject: {fileID: 0}
+  DefaultCameraSize: 10
+  Player: {fileID: 0}
+  drawDebugLines: 1
+  cameraDamping: 0.15
+  maxCameraSpeed: 40
+  FocusX: 35
+  FocusY: 45
+  FocusWidth: 12
+  FocusHeight: 8
+  PanicX: 20
+  PanicY: 20
+  PanicWidth: 60
+  PanicHeight: 60
+--- !u!114 &114821370132074304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456771505613846}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84f89b13e3146a74483d1e6fdfee9cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Offset: {x: 0, y: 4, z: 0}
+  _Offset: {x: 0, y: 3, z: 0}
   DampingTime: 0.15
   MaxLeadDistance: 2
-  Target: {fileID: 4157248105622204, guid: a3ef8efdd1bb00f4e975bdda7727ec38, type: 2}
+  Targets: []

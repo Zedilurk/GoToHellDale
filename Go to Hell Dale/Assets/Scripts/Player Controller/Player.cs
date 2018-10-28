@@ -5,13 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour
 {
-    #region Player Movement Variables
     public enum PlayerStateEnum
     {
-        Respawning, Idle, Running, Jumping,
-        WallSlide, SlodeSlide, PantsDown, Reloading, Dead
+        Respawning = 0,
+        Idle = 1,
+        Running = 2,
+        Jumping = 4,
+        WallSlide = 8,
+        SlodeSlide = 16,
+        PartialReload = 32,
+        FullReload = 64,
+        FailedReload = 128,
+        Dead = 256,
+        PantsDown = 512
     };
 
+    #region Player Movement Variables
     [SerializeField]
     private PlayerStateEnum _PlayerState = PlayerStateEnum.Respawning;
     public PlayerStateEnum PlayerState
@@ -32,9 +41,6 @@ public class Player : MonoBehaviour
     public float MoveSpeed = 20;
     public float DashDistance = 40f;
     public bool HardStopOnKeyUp = false;
-
-    public bool _CanMove = true;
-    public bool _CanJump = true;
 
     public int MaxDashCharges = 3;
     public int PerfectReloadBonus = 1;
@@ -63,7 +69,10 @@ public class Player : MonoBehaviour
 
     Vector2 DirectionalInput;
     bool WallSliding;
-    int WallDirX; 
+    int WallDirX;
+
+    [HideInInspector]
+    public Vector2 PlayerLookDirection = new Vector2(1,0);
     #endregion
 
     #region Reloading Variables
@@ -82,31 +91,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    public enum ReloadStateEnum { NotReloading, PartialReload, FullReload, FailedReload, ReloadSuccess };
-    [SerializeField]
-    private ReloadStateEnum _ReloadState = ReloadStateEnum.NotReloading;
-    public ReloadStateEnum ReloadState
-    {
-        get { return _ReloadState; }
-        set { _ReloadState = value; }
-    }
 
     public float PartialReloadTime = 1.5f;
     public float FullReloadTime = 2.5f;
     public float ActiveReloadStartPercent = 30f;
     public float ActiveReloadEndPercent = 50f;
     public float MaxFailedReloadBonusTime = 4f;
+    private PantsChargeUIManager PantsChargeUIManager;
+    #endregion
+
+    #region Restrictions / Modifications
+    public bool _CanMove = true;
+    public bool _CanJump = true;
+    float _CurentMaxMoveSpeed = 20f;
+
     public bool AllowMovementDuringPartialReload = true;
     public float MaxMoveSpeedDuringPartialReload = 5f;
     public bool AllowMovementDuringFullReload = false;
     public float MaxMoveSpeedDuringFullReload = 3f;
-    private PantsChargeUIManager PantsChargeUIManager; 
+
+
+    public float MaxMoveSpeedWithPantsDown = 10f;
     #endregion
 
     public AudioClip JumpClip;
     AudioSource _PlayerAudioSource;  
-
-
 
 
     #region Setup
@@ -119,6 +128,8 @@ public class Player : MonoBehaviour
         PantsChargeUIManager = GameObject.Find("Pants Charge Manager").GetComponent<PantsChargeUIManager>();
 
         OnPlayerStateChanged += Player_OnPlayerStateChanged;
+
+        _CurentMaxMoveSpeed = MoveSpeed;
     }
 
     private void AutomaticallyCalculateGravity ()
@@ -153,6 +164,11 @@ public class Player : MonoBehaviour
     public void SetDirectionalInput(Vector2 input)
     {
         DirectionalInput = input;
+
+        if (input.x > 0)
+            PlayerLookDirection.x = 1;
+        else if (input.x < 0)
+            PlayerLookDirection.x = -1;
     }
     public void OnJumpInputDown()
     {
@@ -266,14 +282,12 @@ public class Player : MonoBehaviour
                     if (CurrentDashCharges == 0)
                     {
                         _ReloadInstanceTime = FullReloadTime;
-                        ReloadState = ReloadStateEnum.FullReload;
-                        PlayerState = PlayerStateEnum.Reloading;                        
+                        PlayerState = PlayerStateEnum.FullReload;                        
                     }
                     else
                     {
                         _ReloadInstanceTime = PartialReloadTime;
-                        ReloadState = ReloadStateEnum.PartialReload;
-                        PlayerState = PlayerStateEnum.Reloading;                       
+                        PlayerState = PlayerStateEnum.PartialReload;                       
                     }
 
                     _HotspotStartTime = (_ReloadInstanceTime * (ActiveReloadStartPercent / 100));
@@ -293,7 +307,6 @@ public class Player : MonoBehaviour
                     IsReloading = false;
                     CurrentDashCharges = MaxDashCharges + PerfectReloadBonus;
                     PantsChargeUIManager.ChargesUpdated(CurrentDashCharges);
-                    ReloadState = ReloadStateEnum.ReloadSuccess;
                     PlayerState = PlayerStateEnum.Idle;
                 }
                 else
@@ -307,8 +320,7 @@ public class Player : MonoBehaviour
                     percent = 100 - percent;
                     float totalBonusTime = MaxFailedReloadBonusTime * (percent / 100);
 
-                    ReloadState = ReloadStateEnum.FailedReload;
-                    PlayerState = PlayerStateEnum.Reloading;
+                    PlayerState = PlayerStateEnum.FailedReload;
 
                     PantsChargeUIManager.StopReload(false);
                     _ReloadRoutine = StartCoroutine(EndReload(totalBonusTime));
@@ -339,7 +351,6 @@ public class Player : MonoBehaviour
         PantsChargeUIManager.ChargesUpdated(CurrentDashCharges);
         PantsChargeUIManager.StopReload(true);
         IsReloading = false;
-        ReloadState = ReloadStateEnum.NotReloading;
         PlayerState = PlayerStateEnum.Idle;
     }
     #endregion
@@ -379,13 +390,13 @@ public class Player : MonoBehaviour
         {
             targetVelocityX = DirectionalInput.x * MoveSpeed;
 
-            if (ReloadState == ReloadStateEnum.PartialReload)
+            if (PlayerState == PlayerStateEnum.PartialReload)
                 if (targetVelocityX > 0 && targetVelocityX > MaxMoveSpeedDuringPartialReload)
                     targetVelocityX = MaxMoveSpeedDuringPartialReload;
                 else if (targetVelocityX < 0 && targetVelocityX < (MaxMoveSpeedDuringPartialReload * -1))
                     targetVelocityX = (MaxMoveSpeedDuringPartialReload * -1);
 
-            if (ReloadState == ReloadStateEnum.FullReload)
+            if (PlayerState == PlayerStateEnum.FullReload)
                 if (targetVelocityX > 0 && targetVelocityX > MaxMoveSpeedDuringFullReload)
                     targetVelocityX = MaxMoveSpeedDuringFullReload;
                 else if (targetVelocityX < 0 && targetVelocityX < (MaxMoveSpeedDuringFullReload * -1))
@@ -421,49 +432,42 @@ public class Player : MonoBehaviour
             case PlayerStateEnum.Idle:
                 _CanMove = true;
                 _CanJump = true;
+                _PlayerState = PlayerStateEnum.Idle;
                 break;
             case PlayerStateEnum.Jumping:              
                 break;
             case PlayerStateEnum.PantsDown:
+                _CurentMaxMoveSpeed = MaxMoveSpeedWithPantsDown;
+                _CanMove = true;
+                _CanJump = false;
                 break;
-            case PlayerStateEnum.Reloading:
-                switch (_ReloadState)
+            case PlayerStateEnum.PartialReload:
+                if (AllowMovementDuringPartialReload)
                 {
-                    case ReloadStateEnum.NotReloading:
-                        break;
-                    case ReloadStateEnum.PartialReload:
-                        if (AllowMovementDuringPartialReload)
-                        {
-                            _CanMove = true;
-                            _CanJump = true;
-                        }
-                        else
-                        {
-                            _CanMove = false;
-                            _CanJump = false;
-                        }
-                        break;
-                    case ReloadStateEnum.FullReload:
-                        if (AllowMovementDuringFullReload)
-                        {
-                            _CanMove = true;
-                            _CanJump = true;
-                        }
-                        else
-                        {
-                            _CanMove = false;
-                            _CanJump = false;
-                        }
-                        break;
-                    case ReloadStateEnum.FailedReload:
-                        _CanMove = false;
-                        _CanJump = false;
-                        break;
-                    case ReloadStateEnum.ReloadSuccess:
-                        break;
+                    _CanMove = true;
+                    _CanJump = true;
                 }
-                //_CanMove = false;
-                //_CanJump = false;
+                else
+                {
+                    _CanMove = false;
+                    _CanJump = false;
+                }
+                break;
+            case PlayerStateEnum.FullReload:
+                if (AllowMovementDuringFullReload)
+                {
+                    _CanMove = true;
+                    _CanJump = true;
+                }
+                else
+                {
+                    _CanMove = false;
+                    _CanJump = false;
+                }
+                break;
+            case PlayerStateEnum.FailedReload:
+                _CanMove = false;
+                _CanJump = false;
                 break;
             case PlayerStateEnum.Respawning:
                 break;
