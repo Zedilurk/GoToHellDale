@@ -118,7 +118,7 @@ MonoBehaviour:
   ZoneObject: {fileID: 0}
   DefaultCameraSize: 10
   Player: {fileID: 0}
-  drawDebugLines: 1
+  drawDebugLines: 0
   cameraDamping: 0.15
   maxCameraSpeed: 40
   FocusX: 35
