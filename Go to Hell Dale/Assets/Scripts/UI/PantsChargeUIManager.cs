@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PantsChargeUIManager : MonoBehaviour {
+public class PantsChargeUIManager : MonoBehaviour
+{
 
     public List<GameObject> PantsChargeIcons = new List<GameObject>();
     public Sprite ChargedPantsIcon;
@@ -25,9 +26,11 @@ public class PantsChargeUIManager : MonoBehaviour {
     public GameObject reloadBar;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         PantsChargeIcons = GetPantsIcons();
         reloadBar.SetActive(false);
+        ChargesUpdated(3);
     }
 
     public void Update()
@@ -48,11 +51,11 @@ public class PantsChargeUIManager : MonoBehaviour {
             difference = difference.normalized * distance;
 
             // Translate the vector back to A
-            ReloadCursor.position = (ReloadStartPosition.position + difference);            
+            ReloadCursor.position = (ReloadStartPosition.position + difference);
         }
     }
 
-    private List<GameObject> GetPantsIcons ()
+    private List<GameObject> GetPantsIcons()
     {
         List<GameObject> icons = new List<GameObject>();
         foreach (Transform child in transform)
@@ -64,7 +67,7 @@ public class PantsChargeUIManager : MonoBehaviour {
         return icons;
     }
 
-    public void ChargesUpdated (int currentCharges)
+    public void ChargesUpdated(int currentCharges)
     {
         //turn off every pants icon with a higher value than current charges
         foreach (GameObject PantsIcon in PantsChargeIcons)
@@ -72,16 +75,29 @@ public class PantsChargeUIManager : MonoBehaviour {
             int num = -1;
             int.TryParse(PantsIcon.name, out num);
 
-            if (num > currentCharges)
-                PantsIcon.GetComponent<Image>().sprite = UsedPantsIcon;
-            else PantsIcon.GetComponent<Image>().sprite = ChargedPantsIcon;
+            if (UsedPantsIcon != null)
+            { 
+                if (num > currentCharges)
+                    PantsIcon.GetComponent<Image>().sprite = UsedPantsIcon;
+                else
+                    PantsIcon.GetComponent<Image>().sprite = ChargedPantsIcon;
+            }
+            else
+            {
+                if (num > currentCharges)
+                    PantsIcon.SetActive(false);
+                else
+                    PantsIcon.SetActive(true);
+            }
         }
     }
 
-    public void StartReload (float reloadTime, float activeReloadStartPercent, float activeReloadEndPercent)
+    public void StartReload(float reloadTime, float activeReloadStartPercent, float activeReloadEndPercent)
     {
         if (FadeCoroutine != null)
+        {
             StopCoroutine(FadeCoroutine);
+        }
 
         ReloadCursor.GetComponent<Image>().CrossFadeColor(DefaultColor, 0, true, false);
 
@@ -93,7 +109,7 @@ public class PantsChargeUIManager : MonoBehaviour {
         _IsReloading = true;
     }
 
-    private void AdjustActiveReloadMeter (float activeReloadStartPercent, float activeReloadEndPercent)
+    private void AdjustActiveReloadMeter(float activeReloadStartPercent, float activeReloadEndPercent)
     {
         RectTransform activeHandle = ReloadActiveReloadHandle.GetComponent<RectTransform>();
         RectTransform startHandle = ReloadStartPosition.GetComponent<RectTransform>();
@@ -114,22 +130,26 @@ public class PantsChargeUIManager : MonoBehaviour {
         float width = EndDifference.x - StartDifference.x;
 
         activeHandle.sizeDelta = new Vector2(width, activeHandle.rect.height);
-        activeHandle.anchoredPosition = new Vector2(StartDifference.x, activeHandle.anchoredPosition.y);        
+        activeHandle.anchoredPosition = new Vector2(StartDifference.x, activeHandle.anchoredPosition.y);
     }
 
-    public void StopReload (bool success)
+    public void StopReload(bool success)
     {
         if (success)
+        {
             ReloadCursor.GetComponent<Image>().CrossFadeColor(SuccessColor, 0.5f, true, false);
+        }
         else
+        {
             ReloadCursor.GetComponent<Image>().CrossFadeColor(FailColor, 0.5f, true, false);
+        }
 
         _IsReloading = false;
         FadeCoroutine = StartCoroutine(FadeReloadBar(2));
     }
 
     Coroutine FadeCoroutine;
-    IEnumerator FadeReloadBar (float waitTime)
+    IEnumerator FadeReloadBar(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         reloadBar.SetActive(false);

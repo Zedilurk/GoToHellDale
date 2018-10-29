@@ -117,6 +117,7 @@ MonoBehaviour:
   CameraState: 0
   ZoneObject: {fileID: 0}
   DefaultCameraSize: 10
+  PlayerFocused: 1
   Player: {fileID: 0}
   drawDebugLines: 0
   cameraDamping: 0.15

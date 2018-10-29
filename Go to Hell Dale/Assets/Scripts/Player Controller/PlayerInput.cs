@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
+        string[] joysticks = Input.GetJoystickNames();
     }
 
     bool _IsJumpAxisInUse = false;

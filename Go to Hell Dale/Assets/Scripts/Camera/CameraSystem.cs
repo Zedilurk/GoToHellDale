@@ -2,12 +2,13 @@
 
 public class CameraSystem : MonoBehaviour
 {
-
     public enum CameraStateEnum { Follow, Zone };
     public CameraStateEnum CameraState = CameraStateEnum.Follow;
 
     public GameObject ZoneObject;
     public float DefaultCameraSize = 10;
+
+    public bool PlayerFocused = true;
 
     Vector3 Velocity = Vector3.zero;
     public Transform Player;
@@ -54,38 +55,66 @@ public class CameraSystem : MonoBehaviour
             bool useYPanic = false;
             bool useXPanic = false;
 
-            if (IsPlayerOutsideFocusCrossX())
+            //we need to seperate this out into X and Y, not nested Y inside X
+            if (IsPlayerOutsideFocusCrossX() || IsPlayerOutsideFocusCrossY())
             {
-                float distance = CalculateVectorRelativeToLastCameraPosition(Player.position);
-                float cameraSpeed = distance;
-
-                if (cameraSpeed > maxCameraSpeed)
-                    cameraSpeed = maxCameraSpeed;
-
-                float xPos = Player.transform.position.x;
-                float yPos;
-
-                if (IsPlayerOutsideFocusCrossY() && Player.GetComponent<Controller2D>().collisions.below)
-                    yPos = Player.transform.position.y;
-                else if (IsPlayerOutsidePanicCrossY())
+                //Do we move towards player or relative to the focus zone's relationship to the player
+                if (PlayerFocused)
                 {
-                    yPos = Player.transform.position.y;
-                    useYPanic = true;
-                }                    
+                    float distance = CalculateVectorRelativeToLastCameraPosition(Player.position);
+                    float cameraSpeed = distance;
+
+                    if (cameraSpeed > maxCameraSpeed)
+                        cameraSpeed = maxCameraSpeed;
+
+                    float xPos = Player.transform.position.x;
+                    float yPos;
+
+                    if (IsPlayerOutsideFocusCrossY() && Player.GetComponent<Controller2D>().collisions.below)
+                        yPos = Player.transform.position.y;
+                    else if (IsPlayerOutsidePanicCrossY())
+                    {
+                        yPos = Player.transform.position.y;
+                        useYPanic = true;
+                    }
+                    else
+                        yPos = transform.position.y;
+
+                    if (IsPlayerOutsidePanicCrossX())
+                        useXPanic = true;
+
+                    TargetPosition = new Vector3(xPos, yPos, -5);
+                }
                 else
-                    yPos = transform.position.y;
+                {
+                    TranslateZoneBasedOnVelocity(FocusZone, _PlayerScript.Velocity.x);
 
-                if (IsPlayerOutsidePanicCrossX())
-                    useXPanic = true;
+                    float distance = CalculatePlayerDistanceToFocusZone();
+                    float cameraSpeed = distance / 2f;
 
-                TargetPosition = new Vector3(xPos, yPos, -5);
+                    if (cameraSpeed > maxCameraSpeed)
+                        cameraSpeed = maxCameraSpeed;
+
+                    Vector2 moveDirection = DirectionRelativeToScreenZone(FocusZone, Player.gameObject);
+
+                    if (IsPlayerOutsidePanicCrossX())
+                        useXPanic = true;
+
+                    if (IsPlayerOutsidePanicCrossY())
+                        useYPanic = true;
+
+                    moveDirection *= (cameraSpeed / 32f);
+
+                    TargetPosition = new Vector3(transform.position.x, transform.position.y, -5)
+                        + new Vector3(moveDirection.x, moveDirection.y, 0);
+                }
+                
             }
 
             if (useYPanic || useXPanic)
                 transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref Velocity, (cameraDamping * .75f));
             else
                 transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref Velocity, cameraDamping);
-
 
             LastCameraPosition = transform.position;
         }
@@ -94,7 +123,7 @@ public class CameraSystem : MonoBehaviour
             SizeCamera();
 
             TargetPosition = new Vector3(ZoneObject.transform.position.x, ZoneObject.transform.position.y, -5);
-            transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref Velocity, 1 + cameraDamping);
+            transform.position = Vector3.SmoothDamp(transform.position, TargetPosition, ref Velocity, .5f + cameraDamping);
             LastCameraPosition = transform.position;
         }
     }
@@ -122,6 +151,30 @@ public class CameraSystem : MonoBehaviour
 
     }
 
+    public void TranslateZoneBasedOnVelocity (ScreenZone zone, float XVelocity)
+    {
+        if (_PlayerScript.PlayerLookDirection.x > 0)
+        {
+            float targetX = zone.NormalX;
+            targetX -= XVelocity * 7;
+
+            if (XVelocity > .1f)
+                zone.X = Mathf.Lerp(zone.X, targetX, XVelocity * Time.deltaTime);
+            else
+                zone.X = Mathf.Lerp(zone.X, zone.NormalX, 5 * Time.deltaTime);
+        }
+        else if (_PlayerScript.PlayerLookDirection.x < 0)
+        {
+            float targetX = zone.InvertX;
+            targetX += XVelocity * -7;
+
+            if (XVelocity < -.1f)
+                zone.X = Mathf.Lerp(zone.X, targetX, -XVelocity * Time.deltaTime);
+            else
+                zone.X = Mathf.Lerp(zone.X, zone.InvertX, 5 * Time.deltaTime);
+        }        
+    }
+
     public void SetZoneTarget(GameObject zone)
     {
         ZoneObject = zone;
@@ -132,6 +185,26 @@ public class CameraSystem : MonoBehaviour
     {
         CameraState = CameraStateEnum.Follow;
         ZoneObject = null;
+    }
+
+    private Vector2 DirectionRelativeToScreenZone (ScreenZone zone, GameObject obj)
+    {
+        Vector2 direction = new Vector2(0, 0);
+        Vector2 objScreenPos = Camera.main.WorldToScreenPoint(obj.transform.position);
+
+        if (objScreenPos.x < zone.X) // Left of zone
+            direction.x = -1;
+        else if (objScreenPos.x > zone.X + zone.Width) // right of zone
+            direction.x = 1;
+        else direction.x = 0;
+
+        if (objScreenPos.y > zone.Y + zone.Height)
+            direction.y = 1;
+        else if (objScreenPos.y < zone.Y)
+            direction.y = -1;
+        else direction.y = 0;
+
+        return direction;
     }
 
 
@@ -195,6 +268,14 @@ public class CameraSystem : MonoBehaviour
     private float CalculateVectorRelativeToLastCameraPosition(Vector3 vector)
     {
         return Vector3.Distance(LastCameraPosition, vector);
+    }
+
+    private float CalculatePlayerDistanceToFocusZone ()
+    {
+        Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(Player.position);
+        Vector3 FocusPos = new Vector3(FocusZone.X, FocusZone.Y, -1);
+
+        return Vector3.Distance(playerScreenPos, FocusPos);
     }
 
     private void FlipScreenZoneOnX(ScreenZone zone, Vector2 direction)
