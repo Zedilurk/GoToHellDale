@@ -250,6 +250,7 @@ MonoBehaviour:
   MaxJumpVelocity: 25
   MinJumpVelocity: 12
   Velocity: {x: 0, y: 0, z: 0}
+  PlayerLookDirection: {x: 1, y: 0}
   PartialReloadTime: 0.75
   FullReloadTime: 1.25
   ActiveReloadStartPercent: 30

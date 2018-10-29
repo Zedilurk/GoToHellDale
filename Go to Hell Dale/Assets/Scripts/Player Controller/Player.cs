@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
     {
         if (CurrentDashCharges > 0)
         {
-            if (Velocity.x > 0 || Velocity.x < 0)
+            if (Velocity.x > 0.01f || Velocity.x < -0.01f)
             {
                 if (Velocity.x > 0)
                     Velocity.x = DashDistance;
