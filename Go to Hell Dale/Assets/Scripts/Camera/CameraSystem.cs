@@ -144,9 +144,9 @@ public class CameraSystem : MonoBehaviour
         else if (CameraState == CameraStateEnum.Follow)
         {
             if (Camera.main.orthographicSize > DefaultCameraSize)
-            {
                 Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, DefaultCameraSize, cameraDamping);
-            }
+            else if (Camera.main.orthographicSize < DefaultCameraSize)
+                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, DefaultCameraSize, cameraDamping);
         }
 
     }
