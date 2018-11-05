@@ -73,8 +73,11 @@ public class PlayerManager : MonoBehaviour {
                 PlayerCamera.name = "PlayerCamera";
             }
 
+            Player.GetComponent<Player>().PlayerManager = this;
+            
             Player.GetComponent<Player>().PlayerState = global::Player.PlayerStateEnum.Idle;
             Players.Add(Player.GetComponent<Player>());
+            Player.GetComponent<Player>().PlayerNumber = Players.Count;
             Player.GetComponent<PlayerInput>().SetPlayerNumber(Players.Count);
             Player.name = "Player";
         }
@@ -90,10 +93,17 @@ public class PlayerManager : MonoBehaviour {
                 PlayerCamera.name = "PlayerCamera";
             }
 
+            Player.GetComponent<Player>().PlayerManager = this;
             Player.GetComponent<Player>().PlayerState = global::Player.PlayerStateEnum.Idle;
             Players.Add(Player.GetComponent<Player>());
+            Player.GetComponent<Player>().PlayerNumber = Players.Count;
             Player.GetComponent<PlayerInput>().SetPlayerNumber(Players.Count);
             Player.name = "Player";
         }
+    }
+
+    public void Respawn (Player player)
+    {
+        Player.gameObject.transform.position = LevelManager.LastCheckpoint.transform.position;
     }
 }

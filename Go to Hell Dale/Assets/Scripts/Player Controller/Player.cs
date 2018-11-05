@@ -73,6 +73,12 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public Vector2 PlayerLookDirection = new Vector2(1,0);
+
+    public PlayerManager PlayerManager;
+    public int StartingLives = 4;
+    public int CurrentLives = 0;
+
+    public int PlayerNumber = 0;
     #endregion
 
     #region Reloading Variables
@@ -115,18 +121,21 @@ public class Player : MonoBehaviour
     #endregion
 
     public AudioClip JumpClip;
-    AudioSource _PlayerAudioSource;  
+    AudioSource _PlayerAudioSource;
 
-
-    #region Setup
-    void Start()
+    private void Awake()
     {
         _Controller = GetComponent<Controller2D>();
         _PlayerAudioSource = GetComponent<AudioSource>();
         _PlayerAudioSource.clip = JumpClip;
 
-        PantsChargeUIManager = GameObject.Find("Pants Charge Manager").GetComponent<PantsChargeUIManager>();
+        CurrentLives = StartingLives;
+    }
 
+    #region Setup
+    void Start()
+    {       
+        PantsChargeUIManager = GameObject.Find("Pants Charge Manager").GetComponent<PantsChargeUIManager>();
         OnPlayerStateChanged += Player_OnPlayerStateChanged;
 
         _CurentMaxMoveSpeed = MoveSpeed;
@@ -159,6 +168,29 @@ public class Player : MonoBehaviour
                 Velocity.y = 0;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+            Death();
+    }
+
+    public void Death ()
+    {
+        if (CurrentLives > 0)
+            CurrentLives--;
+
+        GameObject.Find("Coffee_Player" + PlayerNumber).GetComponent<LivesUIManager>().SetLivesCount(CurrentLives);
+
+        if (CurrentLives == 0)
+            GameOver();
+        else
+            PlayerManager.Respawn(this);
+    }
+
+    private void GameOver ()
+    {
+
+    }
 
     #region Handle Inputs
     public void SetDirectionalInput(Vector2 input)

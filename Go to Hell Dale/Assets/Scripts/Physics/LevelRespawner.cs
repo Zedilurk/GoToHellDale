@@ -7,7 +7,7 @@ public class LevelRespawner : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            collision.gameObject.transform.position = GameObject.Find("Manager").GetComponent<LevelManager>().LastCheckpoint.transform.position;
+            collision.GetComponent<Player>().Death();
         else
             Destroy(collision.gameObject);
     }
