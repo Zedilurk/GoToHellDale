@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
         if (CurrentLives > 0)
             CurrentLives--;
 
-        GameObject.Find("Coffee_Player" + PlayerNumber).GetComponent<LivesUIManager>().SetLivesCount(CurrentLives);
+        //GameObject.Find("Coffee_Player" + PlayerNumber).GetComponent<LivesUIManager>().SetLivesCount(CurrentLives);
 
         if (CurrentLives == 0)
             GameOver();
