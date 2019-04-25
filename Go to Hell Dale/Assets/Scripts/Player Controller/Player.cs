@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
 
     public float Gravity = -70;
     public float MaxJumpVelocity = 25;
+    public float NoDashChargesJumpVelocity = 15;
     public float MinJumpVelocity = 12;
     [HideInInspector]
     public Vector3 Velocity;
@@ -85,6 +86,9 @@ public class Player : MonoBehaviour
     public int CurrentLives = 0;
 
     public int PlayerNumber = 0;
+
+    public bool DirectionalInputDetachesFromWallSlide = false;
+    public int RequiredGracePeriodToDetachFromWall = 5;
     #endregion
 
     #region Reloading Variables
@@ -199,9 +203,31 @@ public class Player : MonoBehaviour
     }
 
     #region Handle Inputs
+    private int WallSlideDetachGracePeriod = 0;
     public void SetDirectionalInput(Vector2 input)
-    {
+    {      
         DirectionalInput = input;
+
+        if (DirectionalInputDetachesFromWallSlide && WallSliding)
+        {
+            if (WallSlideDetachGracePeriod >= RequiredGracePeriodToDetachFromWall)
+            {
+                if (WallDirX != DirectionalInput.x && DirectionalInput.x != 0)
+                {
+                    Velocity.x = -WallDirX * WallJumpOff.x;
+                    Velocity.y = WallJumpOff.y;
+                    _AvailableJumps--;
+                    _PlayerAudioSource.PlayOneShot(JumpClip);
+                    WallSlideDetachGracePeriod = 0;
+                }
+            }
+            else
+                WallSlideDetachGracePeriod++;
+        }
+        else
+            WallSlideDetachGracePeriod = 0;
+
+
 
         if (input.x > 0)
             PlayerLookDirection.x = 1;
@@ -218,6 +244,7 @@ public class Player : MonoBehaviour
                 Velocity.y = WallJumpClimb.y;
                 _AvailableJumps--;
                 _PlayerAudioSource.PlayOneShot(JumpClip);
+                WallSlideDetachGracePeriod = 0;
             }
             else if (DirectionalInput.x == 0)
             {
@@ -225,6 +252,7 @@ public class Player : MonoBehaviour
                 Velocity.y = WallJumpOff.y;
                 _AvailableJumps--;
                 _PlayerAudioSource.PlayOneShot(JumpClip);
+                WallSlideDetachGracePeriod = 0;
             }
             else
             {
@@ -232,6 +260,7 @@ public class Player : MonoBehaviour
                 Velocity.y = WallLeap.y;
                 _AvailableJumps--;
                 _PlayerAudioSource.PlayOneShot(JumpClip);
+                WallSlideDetachGracePeriod = 0;
             }
         }
 
@@ -243,15 +272,29 @@ public class Player : MonoBehaviour
                 {
                     if (DirectionalInput.x != -Mathf.Sign(_Controller.collisions.slopeNormal.x))
                     { // not jumping against max slope
-                        Velocity.y = MaxJumpVelocity * _Controller.collisions.slopeNormal.y;
-                        Velocity.x = MaxJumpVelocity * _Controller.collisions.slopeNormal.x;
+
+                        if (CurrentDashCharges == 0)
+                        {
+                            Velocity.y = NoDashChargesJumpVelocity * _Controller.collisions.slopeNormal.y;
+                            Velocity.x = NoDashChargesJumpVelocity * _Controller.collisions.slopeNormal.x;
+                        }
+                        else
+                        {
+                            Velocity.y = MaxJumpVelocity * _Controller.collisions.slopeNormal.y;
+                            Velocity.x = MaxJumpVelocity * _Controller.collisions.slopeNormal.x;
+                        }
+                        
                         _AvailableJumps--;
                         _PlayerAudioSource.PlayOneShot(JumpClip);
                     }
                 }
                 else
                 {
-                    Velocity.y = MaxJumpVelocity;
+                    if (CurrentDashCharges == 0)
+                        Velocity.y = NoDashChargesJumpVelocity;
+                    else
+                        Velocity.y = MaxJumpVelocity;
+
                     _AvailableJumps--;
                     _PlayerAudioSource.PlayOneShot(JumpClip);
                 }
