@@ -174,7 +174,6 @@ MonoBehaviour:
   HardStopOnKeyUp: 1
   MaxDashCharges: 3
   PerfectReloadBonus: 1
-  CurrentDashCharges: 4
   MaxJumps: 2
   _AvailableJumps: 2
   MaxJumpResetAngle: 20
@@ -185,6 +184,7 @@ MonoBehaviour:
   WallStickTime: 0.25
   Gravity: -70
   MaxJumpVelocity: 25
+  NoDashChargesJumpVelocity: 15
   MinJumpVelocity: 12
   Velocity: {x: 0, y: 0, z: 0}
   PlayerLookDirection: {x: 1, y: 0}
@@ -192,6 +192,8 @@ MonoBehaviour:
   StartingLives: 4
   CurrentLives: 1
   PlayerNumber: 1
+  DirectionalInputDetachesFromWallSlide: 1
+  RequiredGracePeriodToDetachFromWall: 12
   PartialReloadTime: 0.75
   FullReloadTime: 0.75
   ActiveReloadStartPercent: 30
