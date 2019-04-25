@@ -104,6 +104,7 @@ public class PlayerManager : MonoBehaviour {
 
     public void Respawn (Player player)
     {
+        player.CurrentDashCharges = player.MaxDashCharges;
         Player.gameObject.transform.position = LevelManager.LastCheckpoint.transform.position;
     }
 }

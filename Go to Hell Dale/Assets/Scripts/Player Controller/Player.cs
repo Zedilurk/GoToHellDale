@@ -44,7 +44,13 @@ public class Player : MonoBehaviour
 
     public int MaxDashCharges = 3;
     public int PerfectReloadBonus = 1;
-    public int CurrentDashCharges = 3;
+    private int _CurrentDashCharges = 3;
+    public int CurrentDashCharges
+    {
+        get { return _CurrentDashCharges; }
+        set { _CurrentDashCharges = value; PantsChargeUIManager.ChargesUpdated(_CurrentDashCharges); }
+    }
+
 
     public int MaxJumps = 2;
     public int _AvailableJumps = 0;
@@ -96,7 +102,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
 
     public float PartialReloadTime = 1.5f;
     public float FullReloadTime = 2.5f;
@@ -259,7 +264,6 @@ public class Player : MonoBehaviour
                     {
                         Velocity.y = MaxJumpVelocity;
                         CurrentDashCharges--;
-                        PantsChargeUIManager.ChargesUpdated(CurrentDashCharges);
 
                         _AvailableJumps--;
                         _PlayerAudioSource.PlayOneShot(JumpClip);
@@ -289,7 +293,6 @@ public class Player : MonoBehaviour
                     Velocity.x = -DashDistance;
 
                 CurrentDashCharges--;
-                PantsChargeUIManager.ChargesUpdated(CurrentDashCharges);
             }                        
         }
     }
@@ -339,7 +342,6 @@ public class Player : MonoBehaviour
                     PantsChargeUIManager.StopReload(true);
                     IsReloading = false;
                     CurrentDashCharges = MaxDashCharges + PerfectReloadBonus;
-                    PantsChargeUIManager.ChargesUpdated(CurrentDashCharges);
                     PlayerState = PlayerStateEnum.Idle;
                 }
                 else
@@ -381,7 +383,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
 
         CurrentDashCharges = 3;
-        PantsChargeUIManager.ChargesUpdated(CurrentDashCharges);
         PantsChargeUIManager.StopReload(true);
         IsReloading = false;
         PlayerState = PlayerStateEnum.Idle;
