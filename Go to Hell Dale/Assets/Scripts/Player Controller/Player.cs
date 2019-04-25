@@ -189,7 +189,8 @@ public class Player : MonoBehaviour
 
     private void GameOver ()
     {
-
+        CurrentLives = StartingLives;
+        PlayerManager.Respawn(this);
     }
 
     #region Handle Inputs
