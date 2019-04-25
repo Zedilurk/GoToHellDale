@@ -693,7 +693,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ce54a9dd5d5250b4697f3acf88c896e5, type: 3}
+      objectReference: {fileID: 8300000, guid: fd147305ccb0da44da2fd75ca4588199, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85b7c0d655ddd040a4eae188c9357cc, type: 3}
 --- !u!1 &5081733741528181760 stripped
@@ -792,10 +792,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6498532958099748139}
     m_Modifications:
-    - target: {fileID: 1582517854755176, guid: 60dc9252ded721f458e2a435f3c1ec61, type: 3}
-      propertyPath: m_Name
-      value: UI
-      objectReference: {fileID: 0}
     - target: {fileID: 224987734347526918, guid: 60dc9252ded721f458e2a435f3c1ec61,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -900,6 +896,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582517854755176, guid: 60dc9252ded721f458e2a435f3c1ec61, type: 3}
+      propertyPath: m_Name
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 223652814070200576, guid: 60dc9252ded721f458e2a435f3c1ec61,
         type: 3}
