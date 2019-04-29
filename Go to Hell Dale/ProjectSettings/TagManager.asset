@@ -15,6 +15,8 @@ TagManager:
   - HealthBar
   - Spawn
   - Through
+  - Manager
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - Pickups
   - Ground
   - Projectile
-  - 
+  - Checkpoint
   - 
   - 
   - 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject LevelBottomRespawner;
     public GameObject Spawn = null;
     public GameObject LastCheckpoint = null;
 
