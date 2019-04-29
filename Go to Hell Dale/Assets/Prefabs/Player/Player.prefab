@@ -222,8 +222,10 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 4097
+  skinWidth: 0.03
   horizontalRayCount: 0
   verticalRayCount: 0
+  stepHeight: 0.15
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   collider: {fileID: 0}
@@ -256,8 +258,10 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 4097
+  skinWidth: 0.03
   horizontalRayCount: 5
   verticalRayCount: 5
+  stepHeight: 0.15
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   collider: {fileID: 0}
