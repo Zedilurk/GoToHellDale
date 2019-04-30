@@ -62,5 +62,6 @@ public class Projectile : MonoBehaviour
         IsActive = false;
         this.gameObject.SetActive(false);
         Launcher.AddProjectileBackToPool(this.gameObject);
+        StopAllCoroutines();
     }
 }

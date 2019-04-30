@@ -8,7 +8,7 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject Projectile;
     public bool AutoDeterineProjectilePoolSize = false;
     public int ProjectilePoolSize = 20;
-    private List<GameObject> _ProjectilePool = new List<GameObject>();
+    public List<GameObject> _ProjectilePool = new List<GameObject>();
 
     public float ProjectileLifetime = 10f;
 

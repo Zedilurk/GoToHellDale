@@ -191,8 +191,6 @@ public class Player : MonoBehaviour
         Velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        Debug.Log(Velocity);
-
         if (CurrentLives > 0)
             CurrentLives--;
         
