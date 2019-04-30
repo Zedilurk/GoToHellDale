@@ -11,13 +11,25 @@ public class SplashFade : MonoBehaviour {
     public float AudioDelay = 2f;
     public string LevelToLoadAfter = "";
 
+    public float FadeInStart = 1f;
+    public float FadeOutStart = 4f;
+
+    public Color Color = Color.white;
+
 	// Use this for initialization
 	void Start () {
         _Image = GetComponent<Image>();
-        StartCoroutine(FadeImage(false, 1f));
-        StartCoroutine(PlayAudioIntro(AudioDelay));
-        StartCoroutine(FadeImage(true, 4f));
-        StartCoroutine(LoadLevelAfterDelay(LevelToLoadAfter, 7f));
+
+        StartCoroutine(FadeImage(false, FadeInStart));
+
+        if (AudioClip != null)
+            StartCoroutine(PlayAudioIntro(AudioDelay));
+
+        if (FadeOutStart > 0)
+            StartCoroutine(FadeImage(true, FadeOutStart));
+
+        if (!string.IsNullOrEmpty(LevelToLoadAfter))
+            StartCoroutine(LoadLevelAfterDelay(LevelToLoadAfter, 7f));
     }
 	
 
@@ -32,7 +44,7 @@ public class SplashFade : MonoBehaviour {
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
                 // set color with i as alpha
-                _Image.color = new Color(1, 1, 1, i);
+                _Image.color = new Color(Color.r, Color.g, Color.b, i);
                 yield return null;
             }
         }
@@ -43,7 +55,7 @@ public class SplashFade : MonoBehaviour {
             for (float i = 0; i <= 1; i += Time.deltaTime)
             {
                 // set color with i as alpha
-                _Image.color = new Color(1, 1, 1, i);
+                _Image.color = new Color(Color.r, Color.g, Color.b, i);
                 yield return null;
             }
         }
@@ -58,6 +70,11 @@ public class SplashFade : MonoBehaviour {
     IEnumerator LoadLevelAfterDelay (string level, float delay)
     {
         yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(level);
+    }
+
+    public void LoadLevel (string level)
+    {
         SceneManager.LoadScene(level);
     }
 }

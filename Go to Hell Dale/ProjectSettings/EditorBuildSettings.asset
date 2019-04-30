@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Splashes.unity
     guid: fa10ff895ed0f134396437c937bff013
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Sandbox.unity
     guid: cd911e03524468d47ab2b6ed3958acb9
   - enabled: 1
