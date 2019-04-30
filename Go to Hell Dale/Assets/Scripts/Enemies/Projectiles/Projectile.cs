@@ -59,9 +59,9 @@ public class Projectile : MonoBehaviour
 
     private void OnLifetimeReached ()
     {
+        StopAllCoroutines();
         IsActive = false;
         this.gameObject.SetActive(false);
         Launcher.AddProjectileBackToPool(this.gameObject);
-        StopAllCoroutines();
     }
 }
