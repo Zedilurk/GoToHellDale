@@ -193,7 +193,7 @@ MonoBehaviour:
   CurrentLives: 1
   PlayerNumber: 1
   DirectionalInputDetachesFromWallSlide: 1
-  RequiredGracePeriodToDetachFromWall: 12
+  RequiredGracePeriodToDetachFromWall: 8
   PartialReloadTime: 0.75
   FullReloadTime: 0.75
   ActiveReloadStartPercent: 30

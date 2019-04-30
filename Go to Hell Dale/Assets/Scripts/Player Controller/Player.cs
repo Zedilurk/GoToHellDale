@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
     public int PlayerNumber = 0;
 
     public bool DirectionalInputDetachesFromWallSlide = false;
-    public int RequiredGracePeriodToDetachFromWall = 5;
+    public int RequiredGracePeriodToDetachFromWall = 12;
     #endregion
 
     #region Reloading Variables
@@ -163,6 +163,8 @@ public class Player : MonoBehaviour
         CalculateVelocity();
         HandleWallSliding();
 
+        CalculateDetatchGracePeriod();
+
         _Controller.Move(Velocity * Time.deltaTime, DirectionalInput);
 
         if (_Controller.collisions.below)
@@ -210,35 +212,43 @@ public class Player : MonoBehaviour
 
     #region Handle Inputs
     private int WallSlideDetachGracePeriod = 0;
+    private bool DetatchFromWallSlide = false;
     public void SetDirectionalInput(Vector2 input)
     {      
         DirectionalInput = input;
 
         if (DirectionalInputDetachesFromWallSlide && WallSliding)
         {
-            if (WallSlideDetachGracePeriod >= RequiredGracePeriodToDetachFromWall)
-            {
+            if (DetatchFromWallSlide)
                 if (WallDirX != DirectionalInput.x && DirectionalInput.x != 0)
                 {
                     Velocity.x = -WallDirX * WallJumpOff.x;
                     Velocity.y = WallJumpOff.y;
                     _AvailableJumps--;
                     _PlayerAudioSource.PlayOneShot(JumpClip);
-                    WallSlideDetachGracePeriod = 0;
+                    DetatchFromWallSlide = false;
                 }
+        }
+
+        if (input.x > 0)
+            PlayerLookDirection.x = 1;
+        else if (input.x < 0)
+            PlayerLookDirection.x = -1;
+    }
+    private void CalculateDetatchGracePeriod ()
+    {
+        if (DirectionalInputDetachesFromWallSlide && WallSliding)
+        {
+            if (WallSlideDetachGracePeriod >= RequiredGracePeriodToDetachFromWall)
+            {
+                DetatchFromWallSlide = true;
+                WallSlideDetachGracePeriod = 0;
             }
             else
                 WallSlideDetachGracePeriod++;
         }
         else
             WallSlideDetachGracePeriod = 0;
-
-
-
-        if (input.x > 0)
-            PlayerLookDirection.x = 1;
-        else if (input.x < 0)
-            PlayerLookDirection.x = -1;
     }
     public void OnJumpInputDown()
     {
