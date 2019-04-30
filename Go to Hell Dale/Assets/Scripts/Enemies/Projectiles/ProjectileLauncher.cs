@@ -17,6 +17,7 @@ public class ProjectileLauncher : MonoBehaviour
     public float ProjectilesPerShot = 1;
     public float ProjectileSpeed = 5f;
     public float Gravity = 0f;
+    public bool PlayerImpactOnly = true;
     public List<Vector2> FireDirections = new List<Vector2>() { new Vector2(-1, 0) };
 
     public bool IsFiring = false;
@@ -47,7 +48,9 @@ public class ProjectileLauncher : MonoBehaviour
 
             projectile.Launcher = this;
             projectile.ProjectileSpeed = ProjectileSpeed;
+            projectile.ProjectileLifetime = ProjectileLifetime;
             projectile.Gravity = Gravity;
+            projectile.PlayerImpactOnly = PlayerImpactOnly;
 
             if (FireDirections.Count == 1)
                 projectile.FireDirection = FireDirections[0];
@@ -100,7 +103,6 @@ public class ProjectileLauncher : MonoBehaviour
         while (IsFiring)
         {
             yield return new WaitForSeconds(IntervalBetweenShotsInSeconds);
-            Debug.Log("Launching Projectile");
             FireProjectile();
         }        
     }

@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
         set { _CurrentDashCharges = value; PantsChargeUIManager.ChargesUpdated(_CurrentDashCharges); }
     }
 
-
     public int MaxJumps = 2;
     public int _AvailableJumps = 0;
     public float MaxJumpResetAngle = 20;
@@ -185,10 +184,16 @@ public class Player : MonoBehaviour
 
     public void Death ()
     {
+        Velocity = Vector3.zero;
+        PlayerState = PlayerStateEnum.Dead;
+        Velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        Debug.Log(Velocity);
+
         if (CurrentLives > 0)
             CurrentLives--;
-
-        Velocity = Vector3.zero;
+        
         //GameObject.Find("Coffee_Player" + PlayerNumber).GetComponent<LivesUIManager>().SetLivesCount(CurrentLives);
 
         if (CurrentLives == 0)
@@ -486,8 +491,7 @@ public class Player : MonoBehaviour
 
                 if (HardStopOnKeyUp)
                     Velocity.x = 0;
-            }
-                
+            }                
         }            
         else
             targetVelocityX = 0;        
@@ -548,6 +552,8 @@ public class Player : MonoBehaviour
                 _CanJump = false;
                 break;
             case PlayerStateEnum.Respawning:
+                _CanMove = false;
+                _CanJump = false;
                 break;
             case PlayerStateEnum.Running:
                 _CanMove = true;

@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public Vector2 FireDirection = new Vector2(1, 0);
 
     public float ProjectileLifetime = 10f;
+    public bool PlayerImpactOnly = true;
 
     [HideInInspector]
     public ProjectileLauncher Launcher;
@@ -30,6 +31,12 @@ public class Projectile : MonoBehaviour
     private void OnEnable()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (PlayerImpactOnly)
+            gameObject.layer = LayerMask.NameToLayer("PlayerOnlyProjectile");
+        else
+            gameObject.layer = LayerMask.NameToLayer("Projectile");
+
         rigidbody2D.gravityScale = Gravity;
         rigidbody2D.AddForce(FireDirection * ProjectileSpeed, ForceMode2D.Impulse);
         //IsActive = true;
@@ -44,8 +51,6 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit");
-
         if (collision.gameObject.tag == "Player")
             collision.gameObject.GetComponent<Player>().Death();
 

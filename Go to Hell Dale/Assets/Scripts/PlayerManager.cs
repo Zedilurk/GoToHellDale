@@ -104,7 +104,9 @@ public class PlayerManager : MonoBehaviour {
 
     public void Respawn (Player player)
     {
+        player.PlayerState = global::Player.PlayerStateEnum.Respawning;
         player.CurrentDashCharges = player.MaxDashCharges;
         Player.gameObject.transform.position = LevelManager.LastCheckpoint.transform.position;
+        player.PlayerState = global::Player.PlayerStateEnum.Idle;
     }
 }
