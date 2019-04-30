@@ -188,6 +188,7 @@ public class Player : MonoBehaviour
         if (CurrentLives > 0)
             CurrentLives--;
 
+        Velocity = Vector3.zero;
         //GameObject.Find("Coffee_Player" + PlayerNumber).GetComponent<LivesUIManager>().SetLivesCount(CurrentLives);
 
         if (CurrentLives == 0)
