@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public ProjectileLauncher Launcher;
 
-    private bool IsActive = false;
+    public bool IsActive = false;
     private Rigidbody2D rigidbody2D;
 
     private void Start()
@@ -62,6 +62,5 @@ public class Projectile : MonoBehaviour
         StopAllCoroutines();
         IsActive = false;
         this.gameObject.SetActive(false);
-        Launcher.AddProjectileBackToPool(this.gameObject);
     }
 }
