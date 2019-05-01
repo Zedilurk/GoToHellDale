@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5165826440489776937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.75, y: 3.44, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -135,4 +135,6 @@ MonoBehaviour:
   Gravity: 0
   FireDirection: {x: 1, y: 0}
   ProjectileLifetime: 10
+  PlayerImpactOnly: 1
   Launcher: {fileID: 0}
+  IsActive: 0
