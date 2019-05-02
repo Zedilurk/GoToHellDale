@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Luminosity.IO;
 
 [RequireComponent(typeof(Player))]
 public class PlayerInput : MonoBehaviour
@@ -12,7 +13,7 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
-        string[] joysticks = Input.GetJoystickNames();
+        string[] joysticks = InputManager.GetJoystickNames();
     }
 
     bool _IsJumpAxisInUse = false;
@@ -26,50 +27,44 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        Vector2 directionalInput = new Vector2(Input.GetAxisRaw("Horizontal_" + playerNum), Input.GetAxisRaw("Vertical_" + playerNum));
+        Vector2 directionalInput = new Vector2(InputManager.GetAxis("Horizontal"), InputManager.GetAxis("Vertical"));
+
         player.SetDirectionalInput(directionalInput);
 
-        if (Input.GetAxisRaw("Dash_" + playerNum) != 0)
+        if (InputManager.GetButtonDown("Dash"))
             if (!_IsDashAxisInUse)
             {
                 player.OnDashInputDown();
                 _IsDashAxisInUse = true;
             }
 
-        if (Input.GetAxisRaw("Dash_" + playerNum) == 0)
+        if (InputManager.GetButtonUp("Dash"))
             _IsDashAxisInUse = false;
 
 
-        if (Input.GetAxisRaw("Reload_" + playerNum) != 0)
+        if (InputManager.GetButtonDown("Reload"))
             if (!_IsReloadAxisInUse)
             {
                 player.OnReloadPantsInputDown();
                 _IsReloadAxisInUse = true;
             }
 
-        if (Input.GetAxisRaw("Reload_" + playerNum) == 0)
+        if (InputManager.GetButtonUp("Reload"))
             _IsReloadAxisInUse = false;
 
-
-        if (Input.GetAxisRaw("Jump_" + playerNum) != 0)
+        if (InputManager.GetButtonDown("Jump"))
+        {
             if (!_IsJumpAxisInUse)
             {
                 player.OnJumpInputDown();
                 _IsJumpAxisInUse = true;
-            }                     
+            }
+        }
 
-        if (Input.GetAxisRaw("Jump_" + playerNum) == 0)
+        if (InputManager.GetButtonUp("Jump"))
         {
             player.OnJumpInputUp();
             _IsJumpAxisInUse = false;
         }
-            
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-            player.OnJumpInputDown();
-
-        if (Input.GetKeyUp(KeyCode.Space))      
-            player.OnJumpInputUp();
-        */
     }
 }
