@@ -16,7 +16,6 @@ public class ProjectileLauncher : MonoBehaviour
 
     public float InitialDelay = 0f;
     public float IntervalBetweenShotsInSeconds = 2f;
-    public float ProjectilesPerShot = 1;
     public float ProjectileSpeed = 5f;
     public float Gravity = 0f;
     public bool PlayerImpactOnly = true;

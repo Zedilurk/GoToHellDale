@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Luminosity.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,7 +36,7 @@ public class PlayerManager : MonoBehaviour {
 
     private void HandleSpawnLogic ()
     {
-        if (Input.GetAxisRaw("Jump_1") == 1)
+        if (InputManager.GetAxisRaw("Jump") == 1)
             if (!spawn1InUse)
                 if (Players.Count == 0)
                 {
@@ -43,11 +44,11 @@ public class PlayerManager : MonoBehaviour {
                     spawn1InUse = true;
                 }
 
-        if (Input.GetAxisRaw("Jump_1") == 0)
+        if (InputManager.GetAxisRaw("Jump") == 0)
             spawn1InUse = false;
 
 
-        if (Input.GetAxisRaw("Jump_2") == 1)
+        if (InputManager.GetAxisRaw("Jump") == 1)
             if (!spawn2InUse)
                 if (Players.Count == 0)
                 {
@@ -55,7 +56,7 @@ public class PlayerManager : MonoBehaviour {
                     spawn2InUse = true;
                 }
 
-        if (Input.GetAxisRaw("Jump_2") == 0)
+        if (InputManager.GetAxisRaw("Jump") == 0)
             spawn2InUse = false;
     }
 
