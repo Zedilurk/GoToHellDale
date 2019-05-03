@@ -13,6 +13,8 @@ public class UISlideIn : MonoBehaviour
     public bool UseOvershoot = false;
     public float ReturnToEndPositionTime = .2f;
 
+    public bool SlideInImmediately = false;
+
     private float t;
     private float _timeToReachTarget;
     private RectTransform rectTransform;
@@ -22,7 +24,24 @@ public class UISlideIn : MonoBehaviour
     {
         rectTransform = this.GetComponent<RectTransform>();
         _startPosition = _endPosition = rectTransform.localPosition;
-        StartCoroutine(SlideUI(false, Delay));
+
+        if (SlideInImmediately)
+            InitialSlideIn();
+    }
+
+    private void InitialSlideIn()
+    {
+        StartCoroutine(SlideUI(true, false, Delay));
+    }
+
+    public void BeginSlideIn()
+    {
+        StartCoroutine(SlideUI(true, false, 0));
+    }
+
+    public void BeginSlideOut()
+    {
+        StartCoroutine(SlideUI(false, false, 0));
     }
 
     void FixedUpdate()
@@ -34,14 +53,19 @@ public class UISlideIn : MonoBehaviour
             SetDestination(EndPosition, ReturnToEndPositionTime);
     }
 
-    IEnumerator SlideUI(bool overshoot, float pause)
+    IEnumerator SlideUI(bool slideIn, bool overshoot, float pause)
     {
         yield return new WaitForSeconds(pause);
 
-        if (UseOvershoot)
-            SetDestination(OvershootPosition, TimeToReachTarget);
+        if (slideIn)
+        {
+            if (UseOvershoot)
+                SetDestination(OvershootPosition, TimeToReachTarget);
+            else
+                SetDestination(EndPosition, TimeToReachTarget);
+        }
         else
-            SetDestination(EndPosition, TimeToReachTarget);
+            SetDestination(StartPosition, TimeToReachTarget);        
     }
 
     private Vector3 _startPosition;

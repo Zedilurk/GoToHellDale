@@ -86,4 +86,9 @@ public class SplashFade : MonoBehaviour {
     {
         SceneManager.LoadScene(level);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
