@@ -12769,6 +12769,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spawn: {fileID: 0}
   LastCheckpoint: {fileID: 0}
+  InputManagerPrefab: {fileID: 640681988421914030, guid: b76d3ec450601e548b866705f519d148,
+    type: 3}
 --- !u!114 &5122055218105134137
 MonoBehaviour:
   m_ObjectHideFlags: 0
