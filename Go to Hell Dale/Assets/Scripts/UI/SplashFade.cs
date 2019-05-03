@@ -8,6 +8,7 @@ public class SplashFade : MonoBehaviour {
 
     Image _Image;
     public AudioClip AudioClip;
+    public bool Looping = false;
     public float AudioDelay = 2f;
     public string LevelToLoadAfter = "";
 
@@ -64,7 +65,15 @@ public class SplashFade : MonoBehaviour {
     IEnumerator PlayAudioIntro (float pause)
     {
         yield return new WaitForSeconds(pause);
-        Camera.main.GetComponent<AudioSource>().PlayOneShot(AudioClip);
+        if (Looping)
+        {
+            AudioSource source = Camera.main.GetComponent<AudioSource>();
+            source.loop = true;
+            source.clip = AudioClip;
+            source.Play();
+        }            
+        else
+            Camera.main.GetComponent<AudioSource>().PlayOneShot(AudioClip);
     }
 
     IEnumerator LoadLevelAfterDelay (string level, float delay)
