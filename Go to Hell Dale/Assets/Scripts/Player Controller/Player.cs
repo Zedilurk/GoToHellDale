@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     float TimeToWallUnstick;
 
     public float Gravity = -70;
+    public bool UseGravity = true;
     public float MaxJumpVelocity = 25;
     public float NoDashChargesJumpVelocity = 15;
     public float MinJumpVelocity = 12;
@@ -131,6 +132,11 @@ public class Player : MonoBehaviour
     public AudioClip JumpClip;
     AudioSource _PlayerAudioSource;
 
+    #region Debug
+    private bool _NoClip = false;
+    private bool _God = false;
+    #endregion
+
     private void Awake()
     {
         _Controller = GetComponent<Controller2D>();
@@ -173,7 +179,12 @@ public class Player : MonoBehaviour
 
         if (_Controller.collisions.above || _Controller.collisions.below)
             if (_Controller.collisions.slidingDownMaxSlope)
-                Velocity.y += _Controller.collisions.slopeNormal.y * -Gravity * Time.deltaTime;
+            {
+                if (UseGravity)
+                    Velocity.y += _Controller.collisions.slopeNormal.y * -Gravity * Time.deltaTime;
+                else
+                    Velocity.y += _Controller.collisions.slopeNormal.y * Time.deltaTime;
+            }
             else
                 Velocity.y = 0;
     }
@@ -186,6 +197,9 @@ public class Player : MonoBehaviour
 
     public void Death ()
     {
+        if (_NoClip || _God)
+            return;
+
         Velocity = Vector3.zero;
         PlayerState = PlayerStateEnum.Dead;
         Velocity = Vector3.zero;
@@ -505,7 +519,9 @@ public class Player : MonoBehaviour
             targetVelocityX = 0;        
 
         Velocity.x = Mathf.SmoothDamp(Velocity.x, targetVelocityX, ref VelocityXSmoothing, (_Controller.collisions.below) ? _AccelerationTimeGrounded : _AccelerationTimeAirborne);
-        Velocity.y += Gravity * Time.deltaTime;
+
+        if (UseGravity)
+            Velocity.y += Gravity * Time.deltaTime;
     } 
     #endregion
 
@@ -573,6 +589,23 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+    #region Debug
+    public void NoClip ()
+    {
+        _NoClip = !_NoClip;
+
+        if (_NoClip)
+            UseGravity = false;
+        else
+            UseGravity = true;
+
+    }
+    public void God ()
+    {
+        _God = !_God;
+    }
+    #endregion
 
 
     #region Events
