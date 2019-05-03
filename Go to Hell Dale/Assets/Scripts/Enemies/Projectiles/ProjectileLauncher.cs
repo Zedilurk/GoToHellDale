@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProjectileLauncher : MonoBehaviour
 {
     public GameObject Projectile;
-    public bool AutoDeterineProjectilePoolSize = false;
+    public bool AutoDeterineProjectilePoolSize = true;
     public int ProjectilePoolSize = 20;
 
     private int _CurrentPoolIndex = 0;
@@ -32,7 +32,7 @@ public class ProjectileLauncher : MonoBehaviour
         //Our end projectile pool size is the amount we need rounded, plus an additional 10% as a safety net
         if (AutoDeterineProjectilePoolSize)
         {
-            float initialSize = ProjectileLifetime / IntervalBetweenShotsInSeconds;
+            float initialSize = ProjectileLifetime * IntervalBetweenShotsInSeconds;
             ProjectilePoolSize = Mathf.RoundToInt(initialSize) + Mathf.RoundToInt(initialSize * .10f);
         }
 
@@ -103,10 +103,13 @@ public class ProjectileLauncher : MonoBehaviour
     private void CalculateFiringGroup ()
     {
         float lastDelay = 0;
-
+        float delayUpToThisPoint = 0;
         for (int x = 0; x < FireDirections.Count; x++)
         {
-            StartCoroutine(FireProjectile(FireDirections[x], lastDelay * x));
+            StartCoroutine(FireProjectile(FireDirections[x], delayUpToThisPoint + lastDelay));
+
+            delayUpToThisPoint += lastDelay;
+
             float delay = GetNextAvailableDelay(x);
             if (delay != -1)
                 lastDelay = delay;
