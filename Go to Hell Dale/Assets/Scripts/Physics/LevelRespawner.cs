@@ -8,7 +8,7 @@ public class LevelRespawner : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
             collision.GetComponent<Player>().Death();
-        else
-            Destroy(collision.gameObject);
+        //else
+            //Destroy(collision.gameObject);
     }
 }

@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: FireDirections.Array.data[0].y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &41939648 stripped
@@ -457,6 +461,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileLifetime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -560,6 +568,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -778,6 +790,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -1075,6 +1091,10 @@ PrefabInstance:
       propertyPath: BeginFiringOnSpawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &161799814 stripped
@@ -1169,6 +1189,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectilePoolSize
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -1269,6 +1293,10 @@ PrefabInstance:
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &216664898 stripped
@@ -1346,6 +1374,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1481,6 +1513,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectilePoolSize
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -1887,6 +1923,10 @@ PrefabInstance:
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &414862942 stripped
@@ -1964,6 +2004,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2048,6 +2092,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: PlayerImpactOnly
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -2156,6 +2204,10 @@ PrefabInstance:
       propertyPath: ProjectileLifetime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &561339807 stripped
@@ -2250,6 +2302,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileLifetime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -2357,6 +2413,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: PlayerImpactOnly
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -2608,6 +2668,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileSpeed
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -2887,6 +2951,10 @@ PrefabInstance:
       propertyPath: ProjectileLifetime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &691548627 stripped
@@ -2994,6 +3062,10 @@ PrefabInstance:
       propertyPath: PlayerImpactOnly
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &699534913 stripped
@@ -3068,6 +3140,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -3146,6 +3222,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3326,6 +3406,10 @@ PrefabInstance:
       propertyPath: ProjectileLifetime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!1001 &812435644
@@ -3414,6 +3498,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileLifetime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -19031,6 +19119,10 @@ PrefabInstance:
       propertyPath: FireDirections.Array.data[0].x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &931612202 stripped
@@ -19105,6 +19197,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -19350,6 +19446,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1014235274 stripped
@@ -19492,6 +19592,10 @@ PrefabInstance:
       propertyPath: PlayerImpactOnly
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1069322084 stripped
@@ -19569,6 +19673,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -19882,6 +19990,10 @@ PrefabInstance:
       propertyPath: ProjectileLifetime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!1001 &1119734929
@@ -19971,6 +20083,10 @@ PrefabInstance:
       propertyPath: ProjectilePoolSize
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1119734930 stripped
@@ -20053,6 +20169,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: PlayerImpactOnly
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -20262,6 +20382,10 @@ PrefabInstance:
       propertyPath: DelaysBetweenShots.Array.data[0]
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1184504686 stripped
@@ -20395,6 +20519,10 @@ PrefabInstance:
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1195695604 stripped
@@ -20469,6 +20597,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -20547,6 +20679,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20651,6 +20787,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -20806,6 +20946,10 @@ PrefabInstance:
       propertyPath: PlayerImpactOnly
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1317205137 stripped
@@ -20896,6 +21040,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileLifetime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -21000,6 +21148,10 @@ PrefabInstance:
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1368573845 stripped
@@ -21074,6 +21226,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -21282,6 +21438,10 @@ PrefabInstance:
       propertyPath: _ProjectilePool.Array.data[19]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1385155558 stripped
@@ -21386,6 +21546,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileLifetime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -21675,6 +21839,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: PlayerImpactOnly
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -21980,6 +22148,10 @@ PrefabInstance:
       propertyPath: PlayerImpactOnly
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1617107021 stripped
@@ -22262,7 +22434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: AutoDeterineProjectilePoolSize
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: PlayerImpactOnly
@@ -22363,6 +22535,10 @@ PrefabInstance:
       propertyPath: ProjectilePoolSize
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1739003420 stripped
@@ -22444,6 +22620,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[1].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -22614,6 +22794,10 @@ PrefabInstance:
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1801543081 stripped
@@ -22747,6 +22931,10 @@ PrefabInstance:
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1839650078 stripped
@@ -22829,6 +23017,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -23001,6 +23193,10 @@ PrefabInstance:
       propertyPath: ProjectileLifetime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!4 &1927345250 stripped
@@ -23079,6 +23275,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: FireDirections.Array.data[0].x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -23182,6 +23382,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: IntervalBetweenShotsInSeconds
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
@@ -23304,6 +23508,10 @@ PrefabInstance:
       propertyPath: PlayerImpactOnly
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
 --- !u!1001 &2110362795
@@ -23392,6 +23600,10 @@ PrefabInstance:
     - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
       propertyPath: ProjectileLifetime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302409572, guid: 49f94038a39294441ad6b224402beea6, type: 3}
+      propertyPath: AutoDeterineProjectilePoolSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f94038a39294441ad6b224402beea6, type: 3}
