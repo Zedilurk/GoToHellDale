@@ -44,9 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e346974bb15087b4381ce1c27e4b331e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelBottomRespawner: {fileID: 0}
   Spawn: {fileID: 0}
   LastCheckpoint: {fileID: 0}
+  InputManagerPrefab: {fileID: 640681988421914030, guid: b76d3ec450601e548b866705f519d148,
+    type: 3}
+  DebugMenuPrefab: {fileID: 7576074553571402481, guid: 0090680421b29fb4180638a0ccb2def0,
+    type: 3}
 --- !u!82 &82393120265807952
 AudioSource:
   m_ObjectHideFlags: 0
