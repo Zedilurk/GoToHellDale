@@ -9,6 +9,7 @@ public class UIButtonSelection : MonoBehaviour, ISelectHandler, IDeselectHandler
     public int StandardPosition = 300;
     public int SelectedPosition = 325;
     public bool IsFirstItem = false;
+    public bool IsDifficultySelector;
 
     public AudioClip SelectedClip;
     private AudioSource SelectedSource;
