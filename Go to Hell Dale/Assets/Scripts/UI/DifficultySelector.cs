@@ -11,7 +11,7 @@ public enum DifficultyEnum
     Normal,
     [Description("Super Baby Easy Mode")]
     SuperBabyEasyMode,
-    [Description("H. E. Double Hockey Sticks. L. L.")]
+    [Description("H. E. 2x. Hockey Sticks. L. L.")]
     Hell
 };
 public class DifficultySelector : MonoBehaviour

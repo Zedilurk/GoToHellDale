@@ -32,8 +32,21 @@ public class ProjectileLauncher : MonoBehaviour
         //Our end projectile pool size is the amount we need rounded, plus an additional 10% as a safety net
         if (AutoDeterineProjectilePoolSize)
         {
-            float initialSize = ProjectileLifetime * IntervalBetweenShotsInSeconds;
-            ProjectilePoolSize = Mathf.RoundToInt(initialSize) + Mathf.RoundToInt(initialSize * .10f);
+            //takeRate = 7 / 3 = 2.3
+            //returnRate = 7 / 4.5 = 1.5
+
+            //Amount taken per second
+            float takeRate = FireDirections.Count / IntervalBetweenShotsInSeconds;
+            //Amount returned per second
+            float returnRate = FireDirections.Count / ProjectileLifetime;
+            float returnOnInvestment = (takeRate - returnRate);
+
+            //difference of .8, which means I need at least an additional 20% bonus
+            float requiredBonus = 1 - returnOnInvestment;
+            int requiredBase = Mathf.RoundToInt(FireDirections.Count * takeRate);
+            int bonusAmount = Mathf.RoundToInt(requiredBonus);
+            int requiredCount = requiredBase + bonusAmount + 1;
+            ProjectilePoolSize = requiredCount;
         }
 
         PopulatePool();
