@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luminosity.IO;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -64,7 +65,6 @@ public class Player : MonoBehaviour
     float TimeToWallUnstick;
 
     public float Gravity = -70;
-    public bool UseGravity = true;
     public float MaxJumpVelocity = 25;
     public float NoDashChargesJumpVelocity = 15;
     public float MinJumpVelocity = 12;
@@ -166,27 +166,31 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        CalculateVelocity();
-        HandleWallSliding();
+        if (_NoClip)
+        {
+            float hor = InputManager.GetAxis("Horizontal");
+            float ver = InputManager.GetAxis("Vertical");
+            this.transform.Translate(new Vector3(hor, ver, 0));
+        }
+        else
+        {
+            CalculateVelocity();
+            HandleWallSliding();
 
-        CalculateDetatchGracePeriod();
+            CalculateDetatchGracePeriod();
 
-        _Controller.Move(Velocity * Time.deltaTime, DirectionalInput);
+            _Controller.Move(Velocity * Time.deltaTime, DirectionalInput);
 
-        if (_Controller.collisions.below)
-            if (_Controller.collisions.slopeAngle <= MaxJumpResetAngle)
-                _AvailableJumps = MaxJumps;
+            if (_Controller.collisions.below)
+                if (_Controller.collisions.slopeAngle <= MaxJumpResetAngle)
+                    _AvailableJumps = MaxJumps;
 
-        if (_Controller.collisions.above || _Controller.collisions.below)
-            if (_Controller.collisions.slidingDownMaxSlope)
-            {
-                if (UseGravity)
+            if (_Controller.collisions.above || _Controller.collisions.below)
+                if (_Controller.collisions.slidingDownMaxSlope)
                     Velocity.y += _Controller.collisions.slopeNormal.y * -Gravity * Time.deltaTime;
                 else
-                    Velocity.y += _Controller.collisions.slopeNormal.y * Time.deltaTime;
-            }
-            else
-                Velocity.y = 0;
+                    Velocity.y = 0;
+        }        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -519,9 +523,7 @@ public class Player : MonoBehaviour
             targetVelocityX = 0;        
 
         Velocity.x = Mathf.SmoothDamp(Velocity.x, targetVelocityX, ref VelocityXSmoothing, (_Controller.collisions.below) ? _AccelerationTimeGrounded : _AccelerationTimeAirborne);
-
-        if (UseGravity)
-            Velocity.y += Gravity * Time.deltaTime;
+        Velocity.y += Gravity * Time.deltaTime;
     } 
     #endregion
 
@@ -596,14 +598,21 @@ public class Player : MonoBehaviour
         _NoClip = !_NoClip;
 
         if (_NoClip)
-            UseGravity = false;
+            gameObject.layer = LayerMask.NameToLayer("PlayerInvincible");
         else
-            UseGravity = true;
+            gameObject.layer = LayerMask.NameToLayer("Player");
 
+        Velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
     public void God ()
     {
         _God = !_God;
+
+        if (_God)
+            gameObject.layer = LayerMask.NameToLayer("PlayerInvincible");
+        else
+            gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion
 
