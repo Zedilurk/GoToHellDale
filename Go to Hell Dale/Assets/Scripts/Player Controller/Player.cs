@@ -1,6 +1,8 @@
 ﻿using Luminosity.IO;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Controller2D))]
@@ -20,6 +22,8 @@ public class Player : MonoBehaviour
         Dead = 256,
         PantsDown = 512
     };
+
+    private List<StatusEffect> _AppliedStatusEffects = new List<StatusEffect>();
 
     #region Player Movement Variables
     [SerializeField]
@@ -524,9 +528,19 @@ public class Player : MonoBehaviour
 
         Velocity.x = Mathf.SmoothDamp(Velocity.x, targetVelocityX, ref VelocityXSmoothing, (_Controller.collisions.below) ? _AccelerationTimeGrounded : _AccelerationTimeAirborne);
         Velocity.y += Gravity * Time.deltaTime;
-    } 
+    }
     #endregion
 
+    #region Status Effects
+    public void ApplyStatusEffect (StatusEffect statusEffect)
+    {
+        StatusEffect matchingEffect = _AppliedStatusEffects.FirstOrDefault(x=>x.Effect == statusEffect.Effect);
+
+        //Refresh the status effect
+        if (matchingEffect != null)
+            matchingEffect.RemainingLength = statusEffect.Length;
+    }
+    #endregion
 
     private void Player_OnPlayerStateChanged(object sender, PlayerStateChangedEventArgs e)
     {
@@ -615,7 +629,6 @@ public class Player : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion
-
 
     #region Events
     public delegate void PlayerStateChangedEventHandler(object sender, PlayerStateChangedEventArgs e);
