@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACQn+uA915PVAIAAPQEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzqUDJIbQWwuE9JCPCe3k4stirbEGWfLoI0Ay/PeuZBs79GT57dvVe7trfzKhbIWZ02ZtBH/UHNmPAQtn9m3QBR/wCDutNuIDW86b4K4IJIicV3BCEz4OaVaX6IzIfqqdDOQRgV6JXJtyxXe40NZZgnOQFilktAvZiqDPATvSYzgPKSc6TWbh9EGn+WhwpmOGyqHpqOOkpQ6TllozvcoklBXyILtLSEZtwnhUExVZajhBfqalFLbRw9ypin5f4RTccgHkLQoI3ALFrnBBZz/xOc8tusa4gdNSGGpRXZH90nXfSrD7WtU7SB/uSJL5LAqqqz7+R6jl5kaXD+294+jGFSLbk8IMrOs1tg8vvwr36gByD1uJbwWqJ7022itOQWd8SPUWJ8vu9WJtUWC27/Ba6RXoq67bba/b0QzHg/M5uj8upCi3IfT9tgY2Usde3yb0joam8psEx9WwTQlCg4q/Fv/Arr9DTeBeGOso1LhUQd5WexOobBV7Ftx4t9BGYYQb0RUqkO70QmXc9QivYr1rryL3EL6W5vIm1n4EVykR7vij0VXoRR8uw7KFPjyiLZ69k0JhJzoEnqhPC61UvWH9nrRpG29yyHppOy/4181id8l2OpvMJziZ5neQ3AxnNzMYQ8Jnc9hOkukdi7snFPkE+VILbdpDU1NdcUV71v5EBmsDVdx2buCwFh+l7rVcqFxvMoOonusKF+Fo6BL6IvmKC2rQBp0TKs6bfaZM6myPPL0USqPT1dEZSLsqKavEu3YBSdki/jVSdmbnf1BLAwQUAAAICAAAkJ/rlRFxlWwAAAB3AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9Kz0FFQSi9KLMgoBgoYgjilmSkgdrSShWmSmbmRpVGqkVmaRaKpsa65sXmiYaJpirllYpKRqZmFUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACQn+uA915PVAIAAPQEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACQn+uVEXGVbAAAAHcAAAAJACQAAAAAAAAAAAAAAKECAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWAMAAAAA
+    dataString: UEsDBBQAAAgIAACQn+t61u5LVwIAAPYEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzqUDJOajt5YQ0gOBCe3k4ouw1liDLHn0ET4y/PeuJBs79GT57dvVe7trfxIuTQWZVXqpOVspBuRHj/gz+dZrgy9wonslt/wCDeedM1t4Eg2cN2q5Qnzo04wqwWqe/ZR74ckDBJ3kudLlgu1hrow1COdUGMCQVtZnS4Q+e+SEj/7Mp5zxNJr40wVPs0HviscMpAXdUodJQ+0nDTUyncwELStgXnabkAyahOEgEiVaqjlefqaE4KbWQ+y5Cn7f6Nm7ZZyityDAcwvg+8J6nd3EdZ4bsLVxTc9PXGOLYkXyS8W+ldQcoqoPKpy/I0lmkyAoVl39R4hyc63Kl+beYXBjC54dUGFGje00tgs/fRXu5JGKA90JeC9AvqqlVk4yDFrtfKozMHpqX2/W5gVkhxaPSu9AV7XdbnrdjKY/7F2vwf1pLni586HvjxHYChV6/ZjgO2icym8UHFbD1CUQ9Sr+GvhD990dqgPPXBuLodql9PJ2ymlPJYvQM+/G2bnSEgJci65AUmHPGyxjuyOMDb6Ldi6+izxT/734Ybax5jO4Swnwjf/lnhDaqONtXKZQxxWYYu2s4BJa2T7wip2aKynjjnW70qRtnc5p1knbO86+7haZJrvxZDQbwWicT2ny0J88TOiQJmwyo7tRMp6SsH1cok8qNlFoPRacm2yLS9y05jfSW2pahX1nmh6X/FKqTtO5zNU20wByHSvchIPGS/CbZAvGsUFbsJbLMHHymRKhsgOw9FYoDU4XJ6tp2lZJScU/lPVISubhv5GSK7n+A1BLAwQUAAAICAAAkJ/rlRFxlWwAAAB3AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9Kz0FFQSi9KLMgoBgoYgjilmSkgdrSShWmSmbmRpVGqkVmaRaKpsa65sXmiYaJpirllYpKRqZmFUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACQn+t61u5LVwIAAPYEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACQn+uVEXGVbAAAAHcAAAAJACQAAAAAAAAAAAAAAKQCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 4900000, guid: 1ddf4cd770635fe478e558149850660b,
       type: 3}
@@ -2707,7 +2707,7 @@ MonoBehaviour:
   debugFloor: 0
   debugRoof: 1
   manualDebugFloorRoof: 0
-  showSearchTree: 0
+  showSearchTree: 1
   unwalkableNodeDebugSize: 0.3
   logPathResults: 1
   maxNearestNodeDistance: 100
@@ -2725,7 +2725,7 @@ MonoBehaviour:
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
   tagNames:
-  - Basic Ground
+  - Ground
   - 1
   - 2
   - 3
@@ -2761,14 +2761,14 @@ MonoBehaviour:
   heuristicScale: 1
   threadCount: 1
   maxFrameTime: 10
-  batchGraphUpdates: 0
+  batchGraphUpdates: 1
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
     mode: 0
     seed: 0
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
-  showGraphs: 0
+  showGraphs: 1
 --- !u!4 &1587623517
 Transform:
   m_ObjectHideFlags: 0
@@ -7251,6 +7251,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2903216958799014716, guid: 757b83f3de83503478f334cdec3195fe,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2903216958799014719, guid: 757b83f3de83503478f334cdec3195fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 757b83f3de83503478f334cdec3195fe, type: 3}
@@ -7280,7 +7285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   drawGizmos: 1
-  detailedGizmos: 0
+  detailedGizmos: 1
   startEndModifier:
     addPoints: 0
     exactStartPoint: 3
@@ -7306,6 +7311,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1610cca7f93e75942860faab910f7faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Waypoints: []
+  target: {fileID: 0}
+  PathOperationHasBegun: 0
+--- !u!114 &1926223506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926223503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radius: 0.5
+  height: 1
+  repathRate: 0.5
+  canSearch: 1
+  canMove: 1
+  maxSpeed: 5
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  orientation: 1
+  enableRotation: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 2
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 1
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
 --- !u!1001 &1964687981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7451,7 +7495,7 @@ GameObject:
   - component: {fileID: 2067301927}
   - component: {fileID: 2067301926}
   - component: {fileID: 2067301925}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tilemap (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
