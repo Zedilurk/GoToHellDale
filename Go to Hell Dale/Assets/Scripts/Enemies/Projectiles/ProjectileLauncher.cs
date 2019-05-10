@@ -20,6 +20,9 @@ public class ProjectileLauncher : MonoBehaviour
     public float Gravity = 0f;
     public bool PlayerImpactOnly = true;
     public List<Vector2> FireDirections = new List<Vector2>() { new Vector2(-1, 0) };
+    public bool UseDegreesFiring = false;
+    public List<float> FireDirectionsInDegrees = new List<float>() { 0 };
+    public float DegreesOffset = 0;
     public List<float> DelaysBetweenShots = new List<float>();
 
     [System.NonSerialized]
@@ -32,21 +35,21 @@ public class ProjectileLauncher : MonoBehaviour
         //Our end projectile pool size is the amount we need rounded, plus an additional 10% as a safety net
         if (AutoDeterineProjectilePoolSize)
         {
-            //takeRate = 7 / 3 = 2.3
-            //returnRate = 7 / 4.5 = 1.5
-
-            //Amount taken per second
-            float takeRate = FireDirections.Count / IntervalBetweenShotsInSeconds;
-            //Amount returned per second
-            float returnRate = FireDirections.Count / ProjectileLifetime;
-            float returnOnInvestment = (takeRate - returnRate);
-
-            //difference of .8, which means I need at least an additional 20% bonus
-            float requiredBonus = 1 - returnOnInvestment;
-            int requiredBase = Mathf.RoundToInt(FireDirections.Count * takeRate);
-            int bonusAmount = Mathf.RoundToInt(requiredBonus);
-            int requiredCount = requiredBase + bonusAmount + 1;
-            ProjectilePoolSize = requiredCount;
+            if (UseDegreesFiring)
+            {
+                float requiredBase = FireDirectionsInDegrees.Count * (IntervalBetweenShotsInSeconds * 2 / ProjectileLifetime);
+                float bonusAmount = requiredBase * 1f;
+                int requiredCount = Mathf.RoundToInt(requiredBase + bonusAmount);
+                ProjectilePoolSize = requiredCount;
+            }
+            else
+            {
+                float requiredBase = FireDirections.Count * (IntervalBetweenShotsInSeconds * 2 / ProjectileLifetime);
+                float bonusAmount = requiredBase * 1f;
+                int requiredCount = Mathf.RoundToInt(requiredBase + bonusAmount);
+                ProjectilePoolSize = requiredCount;
+            }
+            
         }
 
         PopulatePool();
@@ -117,16 +120,35 @@ public class ProjectileLauncher : MonoBehaviour
     {
         float lastDelay = 0;
         float delayUpToThisPoint = 0;
-        for (int x = 0; x < FireDirections.Count; x++)
+
+        if (UseDegreesFiring)
         {
-            StartCoroutine(FireProjectile(FireDirections[x], delayUpToThisPoint + lastDelay));
+            for (int x = 0; x < FireDirectionsInDegrees.Count; x++)
+            {
+                StartCoroutine(FireProjectile((FireDirectionsInDegrees[x] + DegreesOffset).DegreeToVector2(), delayUpToThisPoint + lastDelay));
 
-            delayUpToThisPoint += lastDelay;
+                delayUpToThisPoint += lastDelay;
 
-            float delay = GetNextAvailableDelay(x);
-            if (delay != -1)
-                lastDelay = delay;
-        }        
+                float delay = GetNextAvailableDelay(x);
+                if (delay != -1)
+                    lastDelay = delay;
+            }
+        }
+        else
+        {
+            for (int x = 0; x < FireDirections.Count; x++)
+            {
+                StartCoroutine(FireProjectile(FireDirections[x], delayUpToThisPoint + lastDelay));
+
+                delayUpToThisPoint += lastDelay;
+
+                float delay = GetNextAvailableDelay(x);
+                if (delay != -1)
+                    lastDelay = delay;
+            }
+        }
+
+               
     }
 
     private float GetNextAvailableDelay (int index)
@@ -196,7 +218,12 @@ public class ProjectileLauncher : MonoBehaviour
         projectile.PlayerImpactOnly = PlayerImpactOnly;
 
         if (direction == null)
-            projectile.FireDirection = FireDirections[0];
+        {
+            if (UseDegreesFiring)
+                projectile.FireDirection = (FireDirectionsInDegrees[0] + DegreesOffset).DegreeToVector2();
+            else
+                projectile.FireDirection = FireDirections[0];
+        }            
         else
             projectile.FireDirection = (Vector2)direction;
     }
