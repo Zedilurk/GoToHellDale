@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SplashFade : MonoBehaviour {
 
     Image _Image;
+    Text _Text;
     public AudioClip AudioClip;
     public bool Looping = false;
     public float AudioDelay = 2f;
@@ -20,6 +21,7 @@ public class SplashFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _Image = GetComponent<Image>();
+        _Text = GetComponent<Text>();
 
         StartCoroutine(FadeImage(false, FadeInStart));
 
@@ -45,7 +47,10 @@ public class SplashFade : MonoBehaviour {
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
                 // set color with i as alpha
-                _Image.color = new Color(Color.r, Color.g, Color.b, i);
+                if (_Image != null)
+                    _Image.color = new Color(Color.r, Color.g, Color.b, i);
+                else if (_Text != null)
+                    _Text.color = new Color(Color.r, Color.g, Color.b, i);
                 yield return null;
             }
         }
@@ -56,7 +61,10 @@ public class SplashFade : MonoBehaviour {
             for (float i = 0; i <= 1; i += Time.deltaTime)
             {
                 // set color with i as alpha
-                _Image.color = new Color(Color.r, Color.g, Color.b, i);
+                if (_Image != null)
+                    _Image.color = new Color(Color.r, Color.g, Color.b, i);
+                else if (_Text != null)
+                    _Text.color = new Color(Color.r, Color.g, Color.b, i);
                 yield return null;
             }
         }

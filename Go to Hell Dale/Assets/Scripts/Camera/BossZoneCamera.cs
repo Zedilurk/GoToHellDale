@@ -28,7 +28,7 @@ public class BossZoneCamera : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             GameObject camera = Camera.main.gameObject;
-            camera.GetComponent<CameraSystem>().ClearZoneTarget();
+            camera.GetComponent<CameraSystem>().ClearZoneTarget(gameObject);
         }
     }
 }

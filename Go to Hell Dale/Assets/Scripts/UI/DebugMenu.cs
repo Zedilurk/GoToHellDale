@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class DebugMenu : MonoBehaviour
 {
@@ -59,6 +60,20 @@ public class DebugMenu : MonoBehaviour
         myEventSystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         Instantiate(CheckpointPrefab, playerPos, Quaternion.identity);
+        DebugMenuOpen = false;
+        SetMenuVisibility();
+    }
+
+    public void BackToMainMenu ()
+    {
+        SceneManager.LoadScene("Splashes");
+        DebugMenuOpen = false;
+        SetMenuVisibility();
+    }
+
+    public void DevMap(string scene)
+    {
+        SceneManager.LoadScene(scene);
         DebugMenuOpen = false;
         SetMenuVisibility();
     }

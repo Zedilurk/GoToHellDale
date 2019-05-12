@@ -148,7 +148,6 @@ public class CameraSystem : MonoBehaviour
             else if (Camera.main.orthographicSize < DefaultCameraSize)
                 Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, DefaultCameraSize, cameraDamping);
         }
-
     }
 
     public void TranslateZoneBasedOnVelocity (ScreenZone zone, float XVelocity)
@@ -181,10 +180,13 @@ public class CameraSystem : MonoBehaviour
         CameraState = CameraStateEnum.Zone;
     }
 
-    public void ClearZoneTarget()
+    public void ClearZoneTarget(GameObject zone)
     {
-        CameraState = CameraStateEnum.Follow;
-        ZoneObject = null;
+        if (ZoneObject == zone)
+        {
+            CameraState = CameraStateEnum.Follow;
+            ZoneObject = null;
+        }        
     }
 
     private Vector2 DirectionRelativeToScreenZone (ScreenZone zone, GameObject obj)
