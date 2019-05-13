@@ -134,6 +134,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   drawDebugLines: 0
   cameraDamping: 0.15
+  BossZoneDamping: 0.15
   maxCameraSpeed: 40
   FocusX: 35
   FocusY: 45

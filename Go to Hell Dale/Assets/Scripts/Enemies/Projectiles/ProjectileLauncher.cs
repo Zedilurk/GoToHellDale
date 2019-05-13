@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+public enum ProjectileType { Straight, Homing };
 public class ProjectileLauncher : MonoBehaviour
 {
     public GameObject Projectile;
@@ -24,6 +26,8 @@ public class ProjectileLauncher : MonoBehaviour
     public List<float> FireDirectionsInDegrees = new List<float>() { 0 };
     public float DegreesOffset = 0;
     public List<float> DelaysBetweenShots = new List<float>();
+    public List<ProjectileType> ProjectileTypes = new List<ProjectileType>();
+    public float HomingAccuracy = 5f;
 
     [System.NonSerialized]
     public bool IsFiring = false;
@@ -120,12 +124,16 @@ public class ProjectileLauncher : MonoBehaviour
     {
         float lastDelay = 0;
         float delayUpToThisPoint = 0;
+        ProjectileType lastType = ProjectileType.Straight;
 
         if (UseDegreesFiring)
         {
             for (int x = 0; x < FireDirectionsInDegrees.Count; x++)
             {
-                StartCoroutine(FireProjectile((FireDirectionsInDegrees[x] + DegreesOffset).DegreeToVector2(), delayUpToThisPoint + lastDelay));
+                if (ProjectileTypes.Count > x)
+                    lastType = ProjectileTypes[x];
+
+                StartCoroutine(FireProjectile((FireDirectionsInDegrees[x] + DegreesOffset).DegreeToVector2(), delayUpToThisPoint + lastDelay, lastType));
 
                 delayUpToThisPoint += lastDelay;
 
@@ -138,7 +146,10 @@ public class ProjectileLauncher : MonoBehaviour
         {
             for (int x = 0; x < FireDirections.Count; x++)
             {
-                StartCoroutine(FireProjectile(FireDirections[x], delayUpToThisPoint + lastDelay));
+                if (ProjectileTypes.Count > x)
+                    lastType = ProjectileTypes[x];
+
+                StartCoroutine(FireProjectile(FireDirections[x], delayUpToThisPoint + lastDelay, lastType));
 
                 delayUpToThisPoint += lastDelay;
 
@@ -160,7 +171,7 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
 
-    private IEnumerator FireProjectile(Vector2 direction, float? delay)
+    private IEnumerator FireProjectile(Vector2 direction, float? delay, ProjectileType projectileType = ProjectileType.Straight)
     {
         if (delay != null)
             yield return new WaitForSeconds((float)delay);
@@ -173,7 +184,7 @@ public class ProjectileLauncher : MonoBehaviour
 
         if (!projectile.IsActive)
         {
-            SetProjectileValues(projectile, direction);
+            SetProjectileValues(projectile, direction, projectileType);
             pObj.transform.position = this.transform.position;
             pObj.SetActive(true);
             projectile.IsActive = true;
@@ -209,13 +220,16 @@ public class ProjectileLauncher : MonoBehaviour
 
         return projectile;
     }
-    private void SetProjectileValues(Projectile projectile, Vector2? direction = null)
+    private void SetProjectileValues(Projectile projectile, Vector2? direction = null, ProjectileType projectileType = ProjectileType.Straight)
     {
         projectile.Launcher = this;
         projectile.ProjectileSpeed = ProjectileSpeed;
         projectile.ProjectileLifetime = ProjectileLifetime;
         projectile.Gravity = Gravity;
         projectile.PlayerImpactOnly = PlayerImpactOnly;
+        projectile.Type = projectileType;
+        projectile.HomingAccuracy = HomingAccuracy;
+        projectile.transform.rotation = Quaternion.identity;
 
         if (direction == null)
         {

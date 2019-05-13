@@ -16,6 +16,7 @@ public class CameraSystem : MonoBehaviour
 
     public bool drawDebugLines = true;
     public float cameraDamping = .2f;
+    public float BossZoneDamping = 1f;
     public float maxCameraSpeed = 40f;
     ScreenZone FocusZone;
     ScreenZone PanicZone;
@@ -138,7 +139,7 @@ public class CameraSystem : MonoBehaviour
 
             if (minPoint.x < 0 || minPoint.x > 1 || minPoint.y < 0 || minPoint.y > 1)
             {
-                Camera.main.orthographicSize += (1 * cameraDamping);
+                Camera.main.orthographicSize += (1 * BossZoneDamping);
             }
         }
         else if (CameraState == CameraStateEnum.Follow)

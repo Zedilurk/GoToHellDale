@@ -16,6 +16,10 @@ public class Projectile : MonoBehaviour
 
     public bool IsActive = false;
     private Rigidbody2D rigidbody2D;
+    public ProjectileType Type;
+    public float HomingAccuracy = 1f;
+
+    private GameObject player;
 
     private void Start()
     {
@@ -24,8 +28,32 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (IsActive)
-            //rigidbody2D.AddForce(FireDirection * ProjectileSpeed);
+        switch (Type)
+        {
+            case ProjectileType.Straight:
+
+                break;
+            case ProjectileType.Homing:
+                if (player == null)
+                    player = GameObject.Find("Player");
+
+                if (player != null)
+                {
+                    //FireDirection
+                    /*
+                    rigidbody2D.velocity = transform.up * ProjectileSpeed * 100 * Time.deltaTime;
+                    Vector3 targetVector = player.transform.position - transform.position;
+                    float rotatingIndex = Vector3.Cross(targetVector, transform.up).z;
+                    rigidbody2D.angularVelocity = -1 * rotatingIndex * HomingAccuracy * 100 * Time.deltaTime;
+                    */
+
+                    /*
+                    float step = ProjectileSpeed * Time.deltaTime; // calculate distance to move
+                    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+                    */
+                }
+                break;
+        }
     }
 
     private void OnEnable()
@@ -37,9 +65,16 @@ public class Projectile : MonoBehaviour
         else
             gameObject.layer = LayerMask.NameToLayer("Projectile");
 
-        rigidbody2D.gravityScale = Gravity;
-        rigidbody2D.AddForce(FireDirection * ProjectileSpeed, ForceMode2D.Impulse);
-        //IsActive = true;
+        if (Type == ProjectileType.Straight)
+        {
+            rigidbody2D.gravityScale = Gravity;
+            rigidbody2D.AddForce(FireDirection * ProjectileSpeed, ForceMode2D.Impulse);
+        }
+        else if (Type == ProjectileType.Homing)
+        {
+            transform.eulerAngles = new Vector3(FireDirection.x, FireDirection.y, 0);
+        }
+        
         StartCoroutine(LifeCountdown());
     }
 
