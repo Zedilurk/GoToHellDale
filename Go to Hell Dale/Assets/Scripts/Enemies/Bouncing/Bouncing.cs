@@ -5,11 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bouncing : MonoBehaviour
 {
-    public Vector2 BounceDirection = new Vector2(-0.5f, 2f);
+    public List<Vector2> BounceDirections = new List<Vector2>()
+    {
+        new Vector2(0, 2f)
+    };
     public float BounceMultiplier = 8;
     public bool BeginBounceOnSpawn = true;
     public float DelayBeforeBouncing = 0f;
     public float DelayBetweenBounces = 0f;
+    public bool ResetPhysicsBetweenBounces = true;
 
     private Rigidbody2D rigidbody2D;
     public bool IsBouncing = false;
@@ -40,6 +44,22 @@ public class Bouncing : MonoBehaviour
     private IEnumerator Bounce ()
     {
         yield return new WaitForSeconds(DelayBetweenBounces);
-        rigidbody2D.AddForce(BounceDirection * BounceMultiplier, ForceMode2D.Impulse);
+
+        if (ResetPhysicsBetweenBounces)
+            rigidbody2D.velocity = new Vector2(0, 0);
+
+        rigidbody2D.AddForce(GetNextBounceDirection() * BounceMultiplier, ForceMode2D.Impulse);
+    }
+
+    int currentBounceIndex = 0;
+    private Vector2 GetNextBounceDirection ()
+    {
+        if (BounceDirections.Count <= currentBounceIndex)
+            currentBounceIndex = 0;
+
+        Vector2 bounceDir = BounceDirections[currentBounceIndex];
+        currentBounceIndex++;
+ 
+        return bounceDir;
     }
 }
