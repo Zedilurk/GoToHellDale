@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Platform : MonoBehaviour {
 
     Controller2D Player;
+    List<Enemy> Enemies = new List<Enemy>();
 
 	// Use this for initialization
 	void Start () {
@@ -20,12 +22,15 @@ public class Platform : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
             Player = other.gameObject.GetComponent<Controller2D>();
+        if (other.gameObject.tag == "Enemy")
+            if (!Enemies.Contains(other.gameObject.GetComponent<Enemy>()))
+                Enemies.Add(other.gameObject.GetComponent<Enemy>());
     }
 
     void OnTriggerStay2D (Collider2D other)
     {
         if (other.gameObject.tag == "Player")
-        { 
+        {
             if (Player.collisions.below)
             {
                 Debug.Log("Collisions below");
@@ -35,9 +40,16 @@ public class Platform : MonoBehaviour {
             }
             else
             {
-                if (Player.transform.parent != null)
-                    Player.transform.parent = null;
+                Enemy enemy = Enemies.FirstOrDefault(x => x.gameObject == other.gameObject);
+
+                if (enemy.transform.parent == null)
+                    enemy.transform.parent = transform;
             }
+        }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            if (Player.transform.parent == null)
+                Player.transform.parent = transform;
         }
     }
 
@@ -49,6 +61,19 @@ public class Platform : MonoBehaviour {
                 Player.transform.parent = null;
 
             Player = null;
+        }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            Enemy enemy = Enemies.FirstOrDefault(x => x.gameObject == other.gameObject);
+
+            if (!enemy.StayOnPlatformsIndefinitely)
+            {
+                if (enemy.transform.parent != null)
+                    enemy.transform.parent = null;
+
+                Enemies.Remove(enemy);
+            }
+                
         }
     }
 }
