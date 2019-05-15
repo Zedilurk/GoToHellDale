@@ -12,6 +12,8 @@ public class PlatformMover : MonoBehaviour
     public GameObject PlatformToMove;
     public float DistanceToPivotGrace = .1f;
     public bool BeginMovingOnSpawn = true;
+    public float InitialSpawnMoveDelay = 0f;
+    public bool
 
     public float RotationAmount = 0;
 
@@ -21,7 +23,7 @@ public class PlatformMover : MonoBehaviour
         OnPlatformArrived += PlatformHasArrived;
 
         if (BeginMovingOnSpawn)
-            CurrentPivotTarget = PivotPoints[0];
+            StartCoroutine(BeginPlatformMovement());
     }
 
     // Update is called once per frame
@@ -56,6 +58,12 @@ public class PlatformMover : MonoBehaviour
 
         //CurrentPivotTarget = PivotPoints[indexOfCurrent];
         StartCoroutine(WaitBeforeDeparture(indexOfCurrent));
+    }
+
+    IEnumerator BeginPlatformMovement ()
+    {
+        yield return new WaitForSeconds(InitialSpawnMoveDelay);
+        CurrentPivotTarget = PivotPoints[0];
     }
 
     IEnumerator WaitBeforeDeparture (int index)
