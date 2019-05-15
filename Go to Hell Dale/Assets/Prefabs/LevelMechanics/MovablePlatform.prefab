@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5206406360894420209}
   - component: {fileID: 5206406360894420213}
   m_Layer: 0
-  m_Name: MovablePlatform 1
+  m_Name: MovablePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5206406360894420211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5206406362293702286}
@@ -45,19 +45,10 @@ Tilemap:
   m_GameObject: {fileID: 5206406360894420211}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 8, y: -4, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: 9, y: -4, z: 0}
     second:
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -92,8 +83,17 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 13, y: -4, z: 0}
     second:
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 14, y: -4, z: 0}
+    second:
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -102,18 +102,18 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: be089b951209d784389086421a799756, type: 2}
+    m_Data: {fileID: 11400000, guid: 5642eed1950666740830e3ac2d350a4e, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: f21007075f7c3424e9318d6fad50d097, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 5642eed1950666740830e3ac2d350a4e, type: 2}
+    m_Data: {fileID: 11400000, guid: be089b951209d784389086421a799756, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: 21300132, guid: 442271d329218f34c939bcf50d7e7f6a, type: 3}
+    m_Data: {fileID: 21300138, guid: 442271d329218f34c939bcf50d7e7f6a, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300134, guid: 442271d329218f34c939bcf50d7e7f6a, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300138, guid: 442271d329218f34c939bcf50d7e7f6a, type: 3}
+    m_Data: {fileID: 21300132, guid: 442271d329218f34c939bcf50d7e7f6a, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 6
     m_Data:
@@ -139,7 +139,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: -4, z: 0}
-  m_Size: {x: 14, y: 4, z: 1}
+  m_Size: {x: 25, y: 4, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -230,8 +230,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   localWaypoints:
-  - {x: -5, y: 0, z: 0}
-  - {x: 3, y: 0, z: 0}
+  - {x: 5, y: 0, z: 0}
+  - {x: -3, y: 0, z: 0}
   speed: 6
   cyclic: 1
   waitTime: 0.5
@@ -246,10 +246,10 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 11, y: -1.5}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -260,7 +260,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 3}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!19719996 &5206406360894420213
 TilemapCollider2D:
@@ -302,8 +302,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5206406362293702281}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5206406360894420208}
@@ -322,7 +322,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 11, y: -2.5}
+  m_Offset: {x: 22, y: -2.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
