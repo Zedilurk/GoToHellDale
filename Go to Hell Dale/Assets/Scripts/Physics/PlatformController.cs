@@ -16,6 +16,9 @@ public class PlatformController : RaycastController
     [Range(0, 2)]
     public float easeAmount;
 
+    public Transform RotationPivotPoint;
+    public float RotateAmount;
+
     int fromWaypointIndex;
     float percentBetweenWaypoints;
     float nextMoveTime;
@@ -46,6 +49,9 @@ public class PlatformController : RaycastController
         MovePassengers(true);
         transform.Translate(velocity);
         MovePassengers(false);
+
+        if (RotateAmount > 0 || RotateAmount < 0)
+            RotationPivotPoint.transform.Rotate(Vector3.forward, RotateAmount * Time.deltaTime, Space.Self);
     }
 
     float Ease(float x)
