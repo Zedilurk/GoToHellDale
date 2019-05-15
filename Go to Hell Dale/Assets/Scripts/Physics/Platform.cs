@@ -40,16 +40,17 @@ public class Platform : MonoBehaviour {
             }
             else
             {
-                Enemy enemy = Enemies.FirstOrDefault(x => x.gameObject == other.gameObject);
-
-                if (enemy.transform.parent == null)
-                    enemy.transform.parent = transform;
+                if (Player.transform.parent == null)
+                    Player.transform.parent = null;
             }
         }
         else if (other.gameObject.tag == "Enemy")
         {
-            if (Player.transform.parent == null)
-                Player.transform.parent = transform;
+            Enemy enemy = Enemies.FirstOrDefault(x => x.gameObject == other.gameObject);
+
+            if (enemy.transform.parent == null)
+                enemy.transform.parent = transform;
+            
         }
     }
 

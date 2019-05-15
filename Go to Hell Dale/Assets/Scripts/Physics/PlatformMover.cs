@@ -13,7 +13,6 @@ public class PlatformMover : MonoBehaviour
     public float DistanceToPivotGrace = .1f;
     public bool BeginMovingOnSpawn = true;
     public float InitialSpawnMoveDelay = 0f;
-    public bool
 
     public float RotationAmount = 0;
 
