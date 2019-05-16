@@ -205,7 +205,7 @@ namespace LuminosityEditor.IO
 		}
 
 		[MenuItem("Luminosity/Input Manager/Use Custom Input Module", false, 201)]
-		private static void FixEventSystem()
+		public static void FixEventSystem()
 		{
 			UnityEngine.EventSystems.StandaloneInputModule[] im = UnityEngine.Object.FindObjectsOfType<UnityEngine.EventSystems.StandaloneInputModule>();
 			if(im.Length > 0)
