@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 4282400878855969628}
   - component: {fileID: 4282400878855969629}
   - component: {fileID: 4282400878855969630}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: PlatformFollower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5a03e26a542b84f87487b7703198e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemies: []
 --- !u!1 &4282400880292815137
 GameObject:
   m_ObjectHideFlags: 0

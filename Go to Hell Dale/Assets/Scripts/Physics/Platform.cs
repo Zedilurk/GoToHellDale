@@ -6,7 +6,7 @@ using System.Linq;
 public class Platform : MonoBehaviour {
 
     Controller2D Player;
-    List<Enemy> Enemies = new List<Enemy>();
+    public List<Enemy> Enemies = new List<Enemy>();
 
 	// Use this for initialization
 	void Start () {
