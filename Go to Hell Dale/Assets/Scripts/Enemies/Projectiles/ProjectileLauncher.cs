@@ -25,9 +25,15 @@ public class ProjectileLauncher : MonoBehaviour
     public bool UseDegreesFiring = false;
     public List<float> FireDirectionsInDegrees = new List<float>() { 0 };
     public float DegreesOffset = 0;
+
+    public bool TargetPlayerInsteadOfFireDirections = false;
+    public int TargetPlayer_NumberOfShotsToFire = 1;
+    public bool UseRandomProjectileTypes = true;
+
     public List<float> DelaysBetweenShots = new List<float>();
     public List<ProjectileType> ProjectileTypes = new List<ProjectileType>();
     public float HomingAccuracy = 5f;
+
 
     [System.NonSerialized]
     public bool IsFiring = false;
@@ -126,7 +132,34 @@ public class ProjectileLauncher : MonoBehaviour
         float delayUpToThisPoint = 0;
         ProjectileType lastType = ProjectileType.Straight;
 
-        if (UseDegreesFiring)
+        if (TargetPlayerInsteadOfFireDirections)
+        {
+            for (int x = 0; x < TargetPlayer_NumberOfShotsToFire; x++)
+            {
+                Vector3 directionToPlayer = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
+                directionToPlayer.Normalize();
+                ProjectileType type = ProjectileType.Straight;
+
+                if (UseRandomProjectileTypes)
+                {
+                    type = (ProjectileType)Random.Range(0, 2);
+                    Debug.Log(type.ToString());
+                }                    
+                else
+                    if (ProjectileTypes.Count > x)
+                        type = ProjectileTypes[x];
+
+                StartCoroutine(FireProjectile(directionToPlayer, delayUpToThisPoint + lastDelay, type));
+
+                delayUpToThisPoint += lastDelay;
+
+                float delay = GetNextAvailableDelay(x);
+                if (delay != -1)
+                    lastDelay = delay;
+            }
+            
+        }
+        else if (UseDegreesFiring)
         {
             for (int x = 0; x < FireDirectionsInDegrees.Count; x++)
             {
@@ -157,9 +190,7 @@ public class ProjectileLauncher : MonoBehaviour
                 if (delay != -1)
                     lastDelay = delay;
             }
-        }
-
-               
+        }        
     }
 
     private float GetNextAvailableDelay (int index)

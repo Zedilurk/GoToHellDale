@@ -39,6 +39,13 @@ public class Projectile : MonoBehaviour
 
                 if (player != null)
                 {
+                    //Get direction to player, cap direction's y axis at the 'HomingAccuracy' amount, send that way
+                    Vector3 targetDirection = player.transform.position - transform.position;
+                    targetDirection.x = (targetDirection.x > HomingAccuracy) ? HomingAccuracy : targetDirection.x;
+                    targetDirection.y = (targetDirection.y > HomingAccuracy) ? HomingAccuracy : targetDirection.y;
+                    targetDirection.Normalize();
+                    rigidbody2D.AddForce(targetDirection * ProjectileSpeed);
+
                     //FireDirection
                     /*
                     rigidbody2D.velocity = transform.up * ProjectileSpeed * 100 * Time.deltaTime;
@@ -73,6 +80,7 @@ public class Projectile : MonoBehaviour
         else if (Type == ProjectileType.Homing)
         {
             transform.eulerAngles = new Vector3(FireDirection.x, FireDirection.y, 0);
+            //rigidbody2D.AddForce(Vector2.left * ProjectileSpeed, ForceMode2D.Impulse);
         }
         
         StartCoroutine(LifeCountdown());

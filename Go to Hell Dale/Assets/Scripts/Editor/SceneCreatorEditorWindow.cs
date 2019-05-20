@@ -17,10 +17,10 @@ public class SceneCreatorEditorWindow : EditorWindow
     /// <summary>
     /// Display the Scene Editor Window when the Show Window method is called via opening the menu in the Unity Editor UI
     /// </summary>
-    [MenuItem("Go To Hell, Dale/Scene Creator Wizard")]
+    [MenuItem("Go To Hell, Dale/Scene Creation Wizard", false, 0)]
     public static void ShowWindow()
     {
-        EditorWindow window = EditorWindow.GetWindow(typeof(SceneCreatorEditorWindow), false, "Scene Creator Wizard");
+        EditorWindow window = EditorWindow.GetWindow(typeof(SceneCreatorEditorWindow), false, "Dale - Scene Creation Wizard");
         window.minSize = new Vector2(300, 100);
         window.maxSize = new Vector2(300, 100);
 
@@ -32,7 +32,7 @@ public class SceneCreatorEditorWindow : EditorWindow
     {
         GUILayout.Label("Scene Building Settings", EditorStyles.boldLabel);
         SceneName = EditorGUILayout.TextField("Scene Name", SceneName);
-        selectedSceneType = EditorGUILayout.Popup("Label", selectedSceneType, sceneTypeOptions);
+        selectedSceneType = EditorGUILayout.Popup("Scene Type", selectedSceneType, sceneTypeOptions);
 
         if (GUILayout.Button("Create Scene"))
             CreateNewScene(SceneName, sceneTypeOptions[selectedSceneType]);
