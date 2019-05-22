@@ -51,8 +51,9 @@ public class Platform : MonoBehaviour {
         else if (other.gameObject.tag == "Enemy")
         {
             Enemy enemy = Enemies.FirstOrDefault(x => x.gameObject == other.gameObject);
+            Debug.Log("Enemy stayed: " + enemy.gameObject.name);
 
-            if (enemy.transform.parent == null)
+            if (enemy.transform.parent != transform)
                 enemy.transform.parent = transform;            
         }
     }
@@ -75,6 +76,7 @@ public class Platform : MonoBehaviour {
                 if (enemy.transform.parent != null)
                     enemy.transform.parent = null;
 
+                Debug.Log("Enemy left");
                 Enemies.Remove(enemy);
             }
                 
