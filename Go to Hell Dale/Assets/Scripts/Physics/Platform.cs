@@ -6,7 +6,7 @@ using System.Linq;
 public class Platform : MonoBehaviour {
 
     Controller2D Player;
-    public List<Enemy> Enemies = new List<Enemy>();
+    List<Enemy> Enemies = new List<Enemy>();
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,11 @@ public class Platform : MonoBehaviour {
             Player = other.gameObject.GetComponent<Controller2D>();
         if (other.gameObject.tag == "Enemy")
             if (!Enemies.Contains(other.gameObject.GetComponent<Enemy>()))
+            {
                 Enemies.Add(other.gameObject.GetComponent<Enemy>());
+                Debug.Log("Enemy added");
+            }
+                
     }
 
     void OnTriggerStay2D (Collider2D other)
@@ -47,10 +51,10 @@ public class Platform : MonoBehaviour {
         else if (other.gameObject.tag == "Enemy")
         {
             Enemy enemy = Enemies.FirstOrDefault(x => x.gameObject == other.gameObject);
+            Debug.Log("Enemy stayed: " + enemy.gameObject.name);
 
-            if (enemy.transform.parent == null)
-                enemy.transform.parent = transform;
-            
+            if (enemy.transform.parent != transform)
+                enemy.transform.parent = transform;            
         }
     }
 
@@ -72,6 +76,7 @@ public class Platform : MonoBehaviour {
                 if (enemy.transform.parent != null)
                     enemy.transform.parent = null;
 
+                Debug.Log("Enemy left");
                 Enemies.Remove(enemy);
             }
                 
