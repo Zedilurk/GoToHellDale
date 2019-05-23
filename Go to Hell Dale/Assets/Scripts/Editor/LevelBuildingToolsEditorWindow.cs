@@ -91,7 +91,7 @@ public class LevelBuildingToolsEditorWindow : EditorWindow
                 enemyPrefab = Resources.Load<GameObject>("Enemies/Generic/Bouncer");
                 break;
             case GenericEnemyTypesEnum.JumpStack:
-                enemyPrefab = Resources.Load<GameObject>("Enemies/Generic/JumpStack");
+                enemyPrefab = Resources.Load<GameObject>("Enemies/Generic/Jump Stack");
                 break;
             case GenericEnemyTypesEnum.Launcher:
                 enemyPrefab = Resources.Load<GameObject>("Enemies/Generic/Launcher");
@@ -123,7 +123,7 @@ public class LevelBuildingToolsEditorWindow : EditorWindow
                 enemyPrefab = Resources.Load<GameObject>("Enemies/Gluttony/Bouncer");
                 break;
             case GluttonyEnemyTypesEnum.JumpStack:
-                enemyPrefab = Resources.Load<GameObject>("Enemies/Gluttony/JumpStack");
+                enemyPrefab = Resources.Load<GameObject>("Enemies/Gluttony/Jump Stack");
                 break;
             case GluttonyEnemyTypesEnum.Shotgun:
                 enemyPrefab = Resources.Load<GameObject>("Enemies/Gluttony/Shotgun");
