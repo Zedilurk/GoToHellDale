@@ -1394,9 +1394,9 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -26, y: -32}
+      - - {x: -24, y: -32}
         - {x: 32, y: -32}
-        - {x: 32, y: 26}
+        - {x: 32, y: 25}
       tessellationDetail: 0
       bones: []
       spriteID: 32a9c0871f775864dbd0ad9309ccfaa3
@@ -1418,10 +1418,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -32, y: 26}
+      - - {x: -32, y: 25}
         - {x: -32, y: -32}
         - {x: 32, y: -32}
-        - {x: 32, y: 26}
+        - {x: 32, y: 25}
       tessellationDetail: 0
       bones: []
       spriteID: a1ac8aad7d614774fa1c8e1a967b331a
@@ -1443,9 +1443,9 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -32, y: 26}
+      - - {x: -32, y: 25}
         - {x: -32, y: -32}
-        - {x: 26, y: -32}
+        - {x: 24, y: -32}
       tessellationDetail: 0
       bones: []
       spriteID: ed29e02716335e64cb55349cd808f8bb
@@ -1744,8 +1744,8 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -26, y: 32}
-        - {x: -32, y: 26}
+      - - {x: -24, y: 32}
+        - {x: -32, y: 25}
         - {x: -32, y: -32}
         - {x: 32, y: -32}
         - {x: 32, y: 32}
@@ -1794,8 +1794,8 @@ TextureImporter:
       - - {x: -32, y: 32}
         - {x: -32, y: -32}
         - {x: 32, y: -32}
-        - {x: 32, y: 26}
-        - {x: 26, y: 32}
+        - {x: 32, y: 25}
+        - {x: 24, y: 32}
       tessellationDetail: 0
       bones: []
       spriteID: b38b512764e91f24ca281bdd3fe6c9a4
@@ -1817,10 +1817,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -32, y: 26}
+      - - {x: -32, y: 25}
         - {x: -32, y: -32}
         - {x: 32, y: -32}
-        - {x: 32, y: 26}
+        - {x: 32, y: 25}
       tessellationDetail: 0
       bones: []
       spriteID: 4f115a603ea2a2f4cb472cc38229ca3a
